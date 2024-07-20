@@ -23,6 +23,10 @@ COPY --from=build /app/build /usr/share/nginx/html
 # Скопируйте конфигурационный файл Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Скопируйте сертификаты
+COPY /etc/letsencrypt/live/travelbookblog.com/fullchain.pem /etc/letsencrypt/live/travelbookblog.com/fullchain.pem
+COPY /etc/letsencrypt/live/travelbookblog.com/privkey.pem /etc/letsencrypt/live/travelbookblog.com/privkey.pem
+
 # Экспонируйте порт 80 и 443
 EXPOSE 80
 EXPOSE 443
