@@ -1,13 +1,17 @@
 # Сборка фронтенд-приложения
-FROM node:alpine as build
+FROM node:14 as build
 WORKDIR /app
-COPY . .
+COPY package*.json ./
 RUN npm install
+COPY . .
 RUN npm run build
 
 # production environment
-FROM nginx:stable-alpine
+FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
-COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
+
+# Копируем SSL сертификаты
+COPY /etc/letsencrypt /etc/letsencrypt
+
+EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
