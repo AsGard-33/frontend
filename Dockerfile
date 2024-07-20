@@ -1,30 +1,13 @@
 # Сборка фронтенд-приложения
-FROM node:14 as build
-
-# Создайте рабочую директорию
+FROM node:alpine as build
 WORKDIR /app
-
-# Скопируйте package.json и package-lock.json
-COPY package*.json ./
-
-# Установите зависимости
+COPY . .
 RUN npm install
-
-# Скопируйте остальные файлы и постройте приложение
-COPY . ./
 RUN npm run build
 
-# Используйте образ Nginx для развертывания
-FROM nginx:alpine
-
-# Скопируйте собранное приложение в директорию, обслуживаемую Nginx
+# production environment
+FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
-
-# Скопируйте конфигурационный файл Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Экспонируйте порт 80
+COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
-
-# Запускаем Nginx
 CMD ["nginx", "-g", "daemon off;"]
