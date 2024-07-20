@@ -1,17 +1,19 @@
 import "./App.css";
-// import Login from "./components/Login";
-import Register from "./components/Register";
+import { useEffect, useState } from "react";
 
 function App() {
-  
-  return (
-    <div className="App">
-      <h1>Привет, интернет</h1>
-      <Register/>
-
-    
-    </div>
-  );
+  const [locations,setLocations]=useState()
+  async function fetchLocations() {
+    const res = await fetch("/api/locations/");
+    const obj = await res.json();
+    setLocations(obj);
+  }
+  useEffect(() => {
+    fetchLocations();
+  }, []);
+  return <div className="App">privet internet
+    {locations?.map(location =>(<p key={location.id}>{location.title}</p>))} 
+  </div>;
 }
 
 export default App;
