@@ -1,45 +1,45 @@
-import { useState } from "react";
+// src/components/Login.js
+import React, { useState } from 'react';
+import { fetchFromBackend } from '../services/api';
 
-function Login({ setToken }) {
-  const [username, setUsername] = useState('');
+const Login = () => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  async function handleSubmit(event) {
-    event.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetchFromBackend('login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ email, password }),
       });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || 'Не удалось войти');
-      }
-      localStorage.setItem('accessToken', data.access_token); // Сохраняем токен в localStorage
-      setToken(data.access_token); // Передаем токен в родительский компонент
+      console.log('Login successful', response);
     } catch (error) {
-      console.error('Ошибка входа:', error);
+      setError('Login failed. Please check your credentials.');
     }
-  }
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Логин:
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-        <label>
-          Пароль:
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <button type="submit">Войти</button>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <div>
+          <label>Email:</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        </div>
+        <button type="submit">Login</button>
       </form>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
-}
+};
 
 export default Login;

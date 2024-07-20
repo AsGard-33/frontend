@@ -1,17 +1,31 @@
 # Сборка фронтенд-приложения
 FROM node:14 as build
+
+# Создайте рабочую директорию
 WORKDIR /app
+
+# Скопируйте package.json и package-lock.json
 COPY package*.json ./
+
+# Установите зависимости
 RUN npm install
-COPY . .
+
+# Скопируйте остальные файлы и постройте приложение
+COPY . ./
 RUN npm run build
 
-# production environment
+# Используйте образ Nginx для развертывания
 FROM nginx:alpine
+
+# Скопируйте собранное приложение в директорию, обслуживаемую Nginx
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Копируем SSL сертификаты
-COPY /etc/letsencrypt /etc/letsencrypt
+# Скопируйте конфигурационный файл Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80 443
+# Экспонируйте порт 80 и 443
+EXPOSE 80
+EXPOSE 443
+
+# Запускаем Nginx
 CMD ["nginx", "-g", "daemon off;"]
