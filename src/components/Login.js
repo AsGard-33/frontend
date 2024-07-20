@@ -10,7 +10,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetchFromBackend('auth/login', {
+      const response = await fetchFromBackend('/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
