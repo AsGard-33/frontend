@@ -12,7 +12,7 @@ function App() {
     fetchLocations();
   }, []);
   return <div className="App">privet internet
-    {locations.map(location =>(<p key={location.id}>{location.title}</p>))} 
+    {locations?.map(location =>(<p key={location.id}>{location.title}</p>))} 
   </div>;
 }
 
