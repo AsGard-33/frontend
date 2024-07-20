@@ -10,8 +10,5 @@ RUN npm run build
 FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Копируем SSL сертификаты
-COPY /etc/letsencrypt /etc/letsencrypt
-
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
