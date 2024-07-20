@@ -5,6 +5,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,8 +18,11 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
       console.log('Login successful', response);
+      setSuccess(true);  // Устанавливаем успешное состояние
+      setError('');  // Очищаем ошибки
     } catch (error) {
       setError('Login failed. Please check your credentials.');
+      setSuccess(false);  // Очищаем успешное состояние
     }
   };
 
@@ -37,6 +41,7 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      {success && <p style={{ color: 'green' }}>Login successful! Welcome!</p>}
     </div>
   );
 };
