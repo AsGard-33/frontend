@@ -1,35 +1,12 @@
-# Сборка фронтенд-приложения
+# Stage 1: Build the React app
 FROM node:14 as build
-
-# Создайте рабочую директорию
 WORKDIR /app
-
-# Скопируйте package.json и package-lock.json
-COPY package*.json ./
-
-# Установите зависимости
+COPY . .
 RUN npm install
-
-# Скопируйте остальные файлы и постройте приложение
-COPY . ./
 RUN npm run build
 
-# Используйте образ Nginx для развертывания
+# Stage 2: Serve the app with nginx
 FROM nginx:alpine
-
-# Скопируйте собранное приложение в директорию, обслуживаемую Nginx
 COPY --from=build /app/build /usr/share/nginx/html
-
-# Скопируйте конфигурационный файл Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Скопируйте сертификаты
-COPY /etc/letsencrypt/live/travelbookblog.com/fullchain.pem /etc/letsencrypt/live/travelbookblog.com/fullchain.pem
-COPY /etc/letsencrypt/live/travelbookblog.com/privkey.pem /etc/letsencrypt/live/travelbookblog.com/privkey.pem
-
-# Экспонируйте порт 80 и 443
 EXPOSE 80
-EXPOSE 443
-
-# Запускаем Nginx
 CMD ["nginx", "-g", "daemon off;"]
