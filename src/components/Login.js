@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { fetchFromBackend } from '../services/api';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -15,7 +15,7 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       });
       console.log('Login successful', response);
       setSuccess(true);  // Устанавливаем успешное состояние
@@ -31,8 +31,8 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <label>username:</label>
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
         </div>
         <div>
           <label>Password:</label>
