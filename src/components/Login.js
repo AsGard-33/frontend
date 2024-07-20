@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import { fetchFromBackend } from '../services/api';
 
@@ -10,7 +9,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetchFromBackend('login', {
+      const response = await fetchFromBackend('auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
