@@ -1,30 +1,12 @@
-# Сборка фронтенд-приложения
-FROM node:14 as build
+# # Stage 1: Build the React app
+# FROM node:14 as build
+# WORKDIR /app
+# COPY . .
+# RUN npm install
+# RUN npm run build
 
-# Создайте рабочую директорию
-WORKDIR /app
-
-# Скопируйте package.json и package-lock.json
-COPY package*.json ./
-
-# Установите зависимости
-RUN npm install
-
-# Скопируйте остальные файлы и постройте приложение
-COPY . ./
-RUN npm run build
-
-# Используйте образ Nginx для развертывания
-FROM nginx:alpine
-
-# Скопируйте собранное приложение в директорию, обслуживаемую Nginx
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Скопируйте конфигурационный файл Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Экспонируйте порт 80
-EXPOSE 80
-
-# Запускаем Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# # Stage 2: Serve the app with nginx
+# FROM nginx:alpine
+# COPY --from=build /app/build /usr/share/nginx/html
+# EXPOSE 80
+# CMD ["nginx", "-g", "daemon off;"]
