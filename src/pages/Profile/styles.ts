@@ -18,6 +18,7 @@ export const ProfileInfo = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
   gap: 10px;
   position: absolute;
   right: 20px;
