@@ -25,3 +25,15 @@ export const ProfileAvatar = styled.img`
 export const AvatarH2 = styled.h2``;
 
 export const AvatarP = styled.p``;
+
+export const AddFriendButton = styled.button`
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #0056b3;
+  }
+`;

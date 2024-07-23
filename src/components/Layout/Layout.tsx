@@ -35,31 +35,44 @@ function Layout({ children }: LayoutProps) {
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
-            to="/users"
+            to="/register"
           >
-            Users
+            Register
           </StyledNavLink>
+
           <StyledNavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
-            to="/about"
+            to="/login"
           >
-            About
+            Login
           </StyledNavLink>
+
           <StyledNavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
-            to="/clients"
+            to="/logout"
           >
-            Clients
+            Logout
           </StyledNavLink>
+
+          <StyledNavLink
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+            to="/profile"
+          >
+            Profile
+          </StyledNavLink>
+
         </NavContainer>
       </Header>
       <Main>{children}</Main>
       <Footer>
         <NavContainerFooter>
+
           <StyledNavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
@@ -68,30 +81,34 @@ function Layout({ children }: LayoutProps) {
           >
             Home
           </StyledNavLink>
+
           <StyledNavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
-            to="/users"
+            to="/register"
           >
-            Users
+            Register
           </StyledNavLink>
+
           <StyledNavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
-            to="/about"
+            to="/login"
           >
-            About
+            Login
           </StyledNavLink>
+
           <StyledNavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
-            to="/clients"
+            to="/logout"
           >
-            Clients
+            Logout
           </StyledNavLink>
+
         </NavContainerFooter>
       </Footer>
     </LayoutWrapper>

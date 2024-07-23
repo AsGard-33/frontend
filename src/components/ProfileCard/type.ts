@@ -1,6 +1,4 @@
-import { ReactNode } from "react";
-
-interface ProfileData {
+export interface ProfileData {
   firstName: string;
   lastName: string;
   career: string;
@@ -11,5 +9,6 @@ interface ProfileData {
 export interface ProfileCardProps {
   profileData: ProfileData;
   imgSrc: string;
-  children?: ReactNode;
+  children?: React.ReactNode;
+  onAddFriend?: () => void;
 }
