@@ -1,15 +1,26 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Travelbook",
+  "name": "Travelbook Blog - A Paradise for Travel Bloggers",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "Discover the most beautiful places in the world and plan your next trip with us. Our site offers a vibrant community where every user can inspire and be inspired. Join us to connect with like-minded travelers, create blogs, upload stunning photos, and share your adventures!"
 }
