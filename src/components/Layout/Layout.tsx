@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-
+import { FaInstagram, FaTelegram, FaFacebook, FaVk } from 'react-icons/fa';
 import { LayoutProps } from "./types";
 import {
   LayoutWrapper,
@@ -11,6 +11,8 @@ import {
   Footer,
   StyledNavLink,
   NavContainerFooter,
+  SocialIcons,
+  IconLink
 } from "./styles";
 
 function Layout({ children }: LayoutProps) {
@@ -72,7 +74,6 @@ function Layout({ children }: LayoutProps) {
       <Main>{children}</Main>
       <Footer>
         <NavContainerFooter>
-
           <StyledNavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
@@ -108,8 +109,21 @@ function Layout({ children }: LayoutProps) {
           >
             Logout
           </StyledNavLink>
-
         </NavContainerFooter>
+        <SocialIcons>
+          <IconLink href="https://www.instagram.com/oleksiinazarov/" target="_blank" rel="noopener noreferrer">
+            <FaInstagram />
+          </IconLink>
+          <IconLink href="https://t.me/Nazarov_33_69" target="_blank" rel="noopener noreferrer">
+            <FaTelegram />
+          </IconLink>
+          <IconLink href="https://www.facebook.com/akujil" target="_blank" rel="noopener noreferrer">
+            <FaFacebook />
+          </IconLink>
+          <IconLink href="https://vk.com/akuzhil" target="_blank" rel="noopener noreferrer">
+            <FaVk />
+          </IconLink>
+        </SocialIcons>
       </Footer>
     </LayoutWrapper>
   );

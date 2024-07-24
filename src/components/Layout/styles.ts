@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
-
 import { UserLogo, HomeImg } from "assets";
-
 import { colors } from "styles/colors";
 
 export const LayoutWrapper = styled.div`
@@ -59,7 +57,8 @@ export const Main = styled.main`
 
 export const Footer = styled.footer`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 30px;
   width: 100%;
   height: 150px;
@@ -74,4 +73,17 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   font-size: 20px;
   color: white;
+`;
+
+export const SocialIcons = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+export const IconLink = styled.a`
+  color: white;
+  font-size: 24px;
+  &:hover {
+    color: ${colors.secondaryBlue};
+  }
 `;
