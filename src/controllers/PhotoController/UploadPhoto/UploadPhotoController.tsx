@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Container, Form, Input, TextArea, Button, Error } from './styles';
 import { PhotoDTO } from './types';
 
-const UploadPhoto: React.FC = () => {
+const UploadPhotoController: React.FC = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [userId, setUserId] = useState<number | ''>('');
@@ -75,4 +75,4 @@ const UploadPhoto: React.FC = () => {
   );
 }
 
-export default UploadPhoto;
+export default UploadPhotoController;

@@ -35,7 +35,7 @@ import AllMessagesByConversation from "pages/AllMessagesByConversation/AllMessag
 import DeleteMessage from "pages/DeleteMessage/DeleteMessage";
 import AllNotificationsByUser from "pages/AllNotificationsByUser/AllNotificationsByUser";
 import UpdateNotificationStatus from "pages/UpdateNotificationStatus/UpdateNotificationStatus";
-import UploadPhoto from "pages/UploadPhoto/UploadPhoto";
+import UploadPhotoPages from "pages/UploadPhoto/UploadPhotoPages";
 import AllPhotos from "pages/AllPhotos/AllPhotos";
 import AllPhotosByUser from "pages/AllPhotosByUser/AllPhotosByUser";
 import DeletePhoto from "pages/DeletePhoto/DeletePhoto";
@@ -80,7 +80,7 @@ function App() {
           <Route path="/messages/delete/:id" element={<DeleteMessage />} />
           <Route path="/notifications/user/:userId" element={<AllNotificationsByUser />} />
           <Route path="/notifications/update/:id" element={<UpdateNotificationStatus />} />
-          <Route path="/photos/upload" element={<UploadPhoto />} />
+          <Route path="/photos/upload" element={<UploadPhotoPages />} />
           <Route path="/photos" element={<AllPhotos />} />
           <Route path="/photos/user/:userId" element={<AllPhotosByUser />} />
           <Route path="/photos/delete/:photoId" element={<DeletePhoto />} />
