@@ -33,3 +33,12 @@ export const logout = async (): Promise<void> => {
   await axios.get('/api/auth/logout');
   // Удаление токенов или выполнение других необходимых действий
 };
+
+export const updateProfileAvatar = async (userId: number, avatarUrl: string) => {
+  try {
+    const response = await axios.put(`/api/users/${userId}/avatar`, { avatarUrl });
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to update avatar');
+  }
+}

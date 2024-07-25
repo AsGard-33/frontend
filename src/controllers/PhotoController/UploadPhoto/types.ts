@@ -1,8 +1,7 @@
 export interface PhotoDTO {
-    id: string;
-    userId: string;
-    title: string;
-    url: string;
-    description: string;
-  }
-  
+  id: number;
+  url: string;
+  description: string;
+  title: string;
+  userId: number;
+}

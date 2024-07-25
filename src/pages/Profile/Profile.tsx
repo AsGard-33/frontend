@@ -11,7 +11,8 @@ import {
   ProfileError,
   AvatarWrapper,
   AvatarImage,
-  ProfileContainer
+  ProfileContainer,
+  ErrorButton
 } from './styles';
 import Button from 'components/Button/Button';
 
@@ -26,7 +27,7 @@ const Profile: React.FC = () => {
         const data = await getProfile();
         setProfile(data);
       } catch (err) {
-        setError('Пожалуйста, войдите в систему, чтобы просмотреть свой профиль.');
+        setError('Please log in to view your profile.');
       }
     };
 
@@ -40,41 +41,41 @@ const Profile: React.FC = () => {
   if (error) {
     return (
       <ProfileErrorWrapper>
-        <ProfileError>{error}</ProfileError>
-        <Button name='Перейти к входу' onClick={() => navigate('/login')}></Button>
+        <ErrorButton>
+          <ProfileError>{error}</ProfileError>
+          <Button name='Go to Login' onClick={() => navigate('/login')}></Button>
+        </ErrorButton>
       </ProfileErrorWrapper>
     );
   }
 
   return (
     <ProfileWrapper>
-      <ProfileTitle>Профиль</ProfileTitle>
+      <ProfileTitle>Profile</ProfileTitle>
       {profile ? (
         <ProfileContainer>
           <AvatarWrapper>
-            <AvatarImage src='/path/to/avatar.jpg' alt='Аватар пользователя' />
-            <Button name="Загрузить фото" onClick={() => handleNavigate('/photos/upload')} />
+            <AvatarImage src={profile.avatarUrl || '/path/to/default/avatar.jpg'} alt='User Avatar' />
+            <Button name="Upload Photo" onClick={() => handleNavigate('/photos/upload')} />
           </AvatarWrapper>
           <ProfileInfo>
-            <p>Имя пользователя: {profile.username}</p>
+            <p>Username: {profile.username}</p>
             <p>Email: {profile.email}</p>
           </ProfileInfo>
         </ProfileContainer>
       ) : (
-        <div>Загрузка...</div>
+        <div>Loading...</div>
       )}
       <ButtonContainer>
-        <Button name="Все пользователи" onClick={() => handleNavigate('/users')} />
-        <Button name="Все локации" onClick={() => handleNavigate('/locations')} />
-        <Button name="Все блоги" onClick={() => handleNavigate('/blogs')} />
-        <Button name="Все фото" onClick={() => handleNavigate('/photos')} />
-        <Button name="Все сообщения" onClick={() => handleNavigate('/messages')} />
-        <Button name="Все друзья" onClick={() => handleNavigate('/friends')} />
+        <Button name="View All Users" onClick={() => handleNavigate('/users')} />
+        <Button name="View All Locations" onClick={() => handleNavigate('/locations')} />
+        <Button name="View All Blogs" onClick={() => handleNavigate('/blogs')} />
+        <Button name="View All Photos" onClick={() => handleNavigate('/photos')} />
+        <Button name="View All Messages" onClick={() => handleNavigate('/messages')} />
+        <Button name="View All Friends" onClick={() => handleNavigate('/friends')} />
       </ButtonContainer>
     </ProfileWrapper>
   );
 };
 
 export default Profile;
-
-

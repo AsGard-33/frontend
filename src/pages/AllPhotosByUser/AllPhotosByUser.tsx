@@ -16,7 +16,12 @@ const AllPhotosByUser: React.FC = () => {
           setError('User ID is required');
           return;
         }
-        const photosData = await getAllPhotosByUser(parseInt(userId, 10));
+        const userIdNumber = parseInt(userId, 10);
+        if (isNaN(userIdNumber)) {
+          setError('Invalid User ID');
+          return;
+        }
+        const photosData = await getAllPhotosByUser(userIdNumber);
         setPhotos(photosData);
         setError(null);
       } catch (err) {

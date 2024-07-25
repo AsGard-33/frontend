@@ -26,6 +26,7 @@ import AllBlogsByUser from "pages/AllBlogsByUser/AllBlogsByUser";
 import BlogDetail from "pages/BlogDetail/BlogDetail";
 import CreateBlog from "pages/CreateBlog/CreateBlog";
 import UpdateBlog from "pages/UpdateBlog/UpdateBlog";
+import AllBlogsPage from "pages/AllBlogs/AllBlogs";
 import DeleteBlog from "pages/DeleteBlog/DeleteBlog";
 import SearchBlogsByTitle from "pages/SearchBlogsByTitle/SearchBlogsByTitle";
 import AllMessagesBySender from "pages/AllMessagesBySender/AllMessagesBySender";
@@ -35,6 +36,7 @@ import DeleteMessage from "pages/DeleteMessage/DeleteMessage";
 import AllNotificationsByUser from "pages/AllNotificationsByUser/AllNotificationsByUser";
 import UpdateNotificationStatus from "pages/UpdateNotificationStatus/UpdateNotificationStatus";
 import UploadPhoto from "pages/UploadPhoto/UploadPhoto";
+import AllPhotos from "pages/AllPhotos/AllPhotos";
 import AllPhotosByUser from "pages/AllPhotosByUser/AllPhotosByUser";
 import DeletePhoto from "pages/DeletePhoto/DeletePhoto";
 import SearchPhotosByTitle from "pages/SearchPhotosByTitle/SearchPhotosByTitle";
@@ -68,6 +70,7 @@ function App() {
           <Route path="/blogs/user/:userId" element={<AllBlogsByUser />} />
           <Route path="/blogs/:id" element={<BlogDetail />} />
           <Route path="/blogs/create" element={<CreateBlog />} />
+          <Route path="/blogs" element={<AllBlogsPage />} /> 
           <Route path="/blogs/update/:id" element={<UpdateBlog />} />
           <Route path="/blogs/delete/:id" element={<DeleteBlog />} />
           <Route path="/blogs/search/:title" element={<SearchBlogsByTitle />} />
@@ -78,6 +81,7 @@ function App() {
           <Route path="/notifications/user/:userId" element={<AllNotificationsByUser />} />
           <Route path="/notifications/update/:id" element={<UpdateNotificationStatus />} />
           <Route path="/photos/upload" element={<UploadPhoto />} />
+          <Route path="/photos" element={<AllPhotos />} />
           <Route path="/photos/user/:userId" element={<AllPhotosByUser />} />
           <Route path="/photos/delete/:photoId" element={<DeletePhoto />} />
           <Route path="/photos/search/:title" element={<SearchPhotosByTitle />} />

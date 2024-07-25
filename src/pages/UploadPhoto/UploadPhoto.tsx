@@ -11,13 +11,14 @@ import {
   FileInput,
   StyledButton
 } from './styles';
-import { PhotoDTO } from './types'; 
+import { PhotoDTO } from './types';
+import { updateProfileAvatar } from 'services/authService'; // Предположим, что у нас есть такой сервис
 
 const UploadPhoto: React.FC = () => {
   const [photo, setPhoto] = useState<File | null>(null);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [userId, setUserId] = useState<string>(''); // Добавлено состояние для userId
+  const [userId, setUserId] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -38,16 +39,24 @@ const UploadPhoto: React.FC = () => {
     formData.append('title', title);
     formData.append('photo', photo);
     formData.append('description', description);
-    formData.append('userId', userId); // Добавляем userId в formData
+    formData.append('userId', String(userId));
 
     try {
-      const response: AxiosResponse<PhotoDTO> = await axios.post('/api/photos', formData);
-      console.log(response.data); // Логирование данных ответа для отладки
+      const response: AxiosResponse<PhotoDTO> = await axios.post('/api/photos/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(response.data);
       setSuccess(true);
       setError(null);
-      setTimeout(() => navigate('/profile'), 2000); // Перенаправление обратно на профиль через 2 секунды
-    } catch (err) {
-      console.error(err); // Добавим вывод ошибки в консоль для отладки
+
+      // Обновляем профиль с новым URL аватара
+      await updateProfileAvatar(userId, response.data.url);
+
+      setTimeout(() => navigate('/profile'), 2000);
+    } catch (err: any) {
+      console.error(err);
       setError('Failed to upload photo');
       setSuccess(false);
     }
@@ -59,9 +68,9 @@ const UploadPhoto: React.FC = () => {
       {error && <ErrorMessage>{error}</ErrorMessage>}
       {success && <SuccessMessage>Photo uploaded successfully!</SuccessMessage>}
       <Input
-        type="text"
-        value={userId}
-        onChange={(e) => setUserId(e.target.value)}
+        type="number"
+        value={userId ? userId.toString() : ''}
+        onChange={(e) => setUserId(Number(e.target.value))}
         placeholder="Enter user ID"
       />
       <Input

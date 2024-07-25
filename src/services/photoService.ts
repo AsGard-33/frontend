@@ -11,15 +11,15 @@ export const uploadPhoto = async (formData: FormData): Promise<PhotoDTO> => {
 };
 
 export const getAllPhotosByUser = async (userId: number): Promise<PhotoDTO[]> => {
-    const response = await axios.get(`/api/photos/user/${userId}`);
-    return response.data;
+  const response = await axios.get(`/api/photos/user/${userId}`);
+  return response.data;
 };
 
 export const deletePhoto = async (photoId: number): Promise<void> => {
-    await axios.delete(`/api/photos/${photoId}`);
+  await axios.delete(`/api/photos/${photoId}`);
 };
 
 export const searchPhotosByTitle = async (title: string): Promise<PhotoDTO[]> => {
-    const response = await axios.get(`/api/photos/search/${title}`);
-    return response.data;
-  };
+  const response = await axios.get(`/api/photos/search/${title}`);
+  return response.data;
+};

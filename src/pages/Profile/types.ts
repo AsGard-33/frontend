@@ -1,5 +1,6 @@
 export interface UserDTO {
-  id: number;
+  id: string;
   username: string;
   email: string;
+  avatarUrl?: string; // Добавляем свойство avatarUrl
 }

@@ -31,3 +31,14 @@ export const searchBlogsByTitle = async (title: string): Promise<BlogCreateDTO[]
     const response = await axios.get(`/api/blogs/search/${title}`);
     return response.data;
 };
+
+export const getAllBlogs = async (): Promise<BlogCreateDTO[]> => {
+  try {
+    const response = await axios.get<BlogCreateDTO[]>('/api/blogs/all');
+    return response.data;
+  } catch (error) {
+    // Логгирование ошибки или другие действия
+    console.error('Failed to fetch all blogs', error);
+    throw new Error('Failed to fetch all blogs');
+  }
+};

@@ -23,7 +23,7 @@ const AllUsers: React.FC = () => {
     const getCurrentUserProfile = async () => {
       try {
         const profile = await getProfile();
-        setCurrentUserId(profile.id);
+        setCurrentUserId(Number(profile.id)); // Преобразуем profile.id в число
       } catch (err) {
         setError('Failed to fetch current user profile');
       }

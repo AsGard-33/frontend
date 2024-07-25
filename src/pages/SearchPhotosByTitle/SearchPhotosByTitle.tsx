@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { searchPhotosByTitle } from 'services/photoService';
 import { SearchPhotosWrapper, Title, ErrorMessage, PhotoList, PhotoItem } from './styles';
-import { PhotoDTO } from './types'; // Используем общее определение типа
+import { PhotoDTO } from './types';
 import Button from 'components/Button/Button';
 
 const SearchPhotosByTitle: React.FC = () => {
@@ -37,8 +37,8 @@ const SearchPhotosByTitle: React.FC = () => {
       <PhotoList>
         {photos.map((photo) => (
           <PhotoItem key={photo.id}>
-            <p>{photo.title}</p>
             <img src={photo.url} alt={photo.title} />
+            <p>{photo.title}</p>
           </PhotoItem>
         ))}
       </PhotoList>

@@ -44,9 +44,18 @@ export const ProfileErrorWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: #f7f7f7;
+  height: 150px;
+  width: 300px;
+  background-color: #d8e8dbd8;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  @media (max-width: 768px) {
+    width: 90%;
+    height: auto;
+  }
 `;
 
 export const ProfileError = styled.div`
@@ -59,4 +68,8 @@ export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const ErrorButton = styled.div`
+
 `;

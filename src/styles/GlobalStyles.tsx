@@ -10,6 +10,7 @@ const globalStyles = css`
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
   }
 
   h1,
@@ -25,13 +26,13 @@ const globalStyles = css`
 
   #root {
     display: flex;
-    flex: 1;
-    height: 100%;
+    flex-direction: column;
+    min-height: 100vh;
   }
 `;
 
 function GlobalStyles() {
-  return <Global styles={globalStyles}/>;
+  return <Global styles={globalStyles} />;
 }
 
 export default GlobalStyles;

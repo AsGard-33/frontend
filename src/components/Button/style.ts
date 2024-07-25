@@ -13,7 +13,7 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   border-radius: 4px;
   padding: 20px;
   background-color: ${({ isRed, disabled }) =>
-    disabled ? "#d3d3d3" : isRed ? "red" : "#1f27f5"};
+    disabled ? "#d3d3d3" : isRed ? "red" : "#486ffa"};
   color: white;
   font-size: 16px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
@@ -21,5 +21,22 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   &:disabled {
     cursor: not-allowed;
     opacity: 0.7;
+  }
+  
+  &:hover {
+    background-color: ${({ isRed, disabled }) =>
+      disabled ? "#d3d3d3" : isRed ? "darkred" : "#2a144f"};
+  }
+
+  @media (max-width: 768px) {
+    height: 50px;
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    height: 40px;
+    padding: 10px;
+    font-size: 12px;
   }
 `;

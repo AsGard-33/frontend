@@ -1,77 +1,78 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {
-  PhotoWrapper,
-  Input,
-  Button,
-  SuccessMessage,
-  ErrorMessage
-} from './styles';
+import { Container, Form, Input, TextArea, Button, Error } from './styles';
 import { PhotoDTO } from './types';
 
 const UploadPhoto: React.FC = () => {
-  const [photo, setPhoto] = useState<PhotoDTO>({
-    id: '',
-    userId: '',
-    title: '',
-    url: '',
-    description: ''
-  });
-  const [success, setSuccess] = useState<string | null>(null);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [userId, setUserId] = useState<number | ''>('');
+  const [photo, setPhoto] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<PhotoDTO | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setPhoto((prevPhoto) => ({ ...prevPhoto, [name]: value }));
-  };
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!photo || userId === '') {
+      setError('Please provide all the required fields');
+      return;
+    }
 
-  const handleSubmit = async () => {
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('userId', userId.toString());
+    formData.append('photo', photo);
+
     try {
-      const response = await axios.post('/api/photos', photo);
-      console.log(response.data); // Логирование данных ответа для отладки
-      setSuccess('Фото успешно загружено.');
+      const response = await axios.post('/api/photos/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      setSuccess(response.data);
       setError(null);
     } catch (err) {
-      setError('Не удалось загрузить фото.');
+      setError('Failed to upload photo');
       setSuccess(null);
     }
   };
 
   return (
-    <PhotoWrapper>
-      <Input
-        type="text"
-        name="userId"
-        placeholder="Введите ID пользователя"
-        value={photo.userId}
-        onChange={handleChange}
-      />
-      <Input
-        type="text"
-        name="title"
-        placeholder="Введите название фото"
-        value={photo.title}
-        onChange={handleChange}
-      />
-      <Input
-        type="text"
-        name="url"
-        placeholder="Введите URL фото"
-        value={photo.url}
-        onChange={handleChange}
-      />
-      <Input
-        type="text"
-        name="description"
-        placeholder="Введите описание фото"
-        value={photo.description}
-        onChange={handleChange}
-      />
-      <Button onClick={handleSubmit}>Загрузить фото</Button>
-      {success && <SuccessMessage>{success}</SuccessMessage>}
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-    </PhotoWrapper>
+    <Container>
+      <h1>Upload Photo</h1>
+      <Form onSubmit={handleSubmit}>
+        <Input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <TextArea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <Input
+          type="number"
+          placeholder="User ID"
+          value={userId}
+          onChange={(e) => setUserId(Number(e.target.value))}
+          required
+        />
+        <Input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setPhoto(e.target.files ? e.target.files[0] : null)}
+          required
+        />
+        <Button type="submit">Upload</Button>
+      </Form>
+      {error && <Error>{error}</Error>}
+      {success && <div>Photo uploaded successfully: {success.url}</div>}
+    </Container>
   );
-};
+}
 
 export default UploadPhoto;
