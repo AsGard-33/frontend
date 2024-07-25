@@ -33,3 +33,8 @@ export const Description = styled.p`
   font-size: 14px;
   color: #666;
 `;
+
+export const PhotoInfo = styled.p`
+  font-size: 12px;
+  color: #999;
+`;

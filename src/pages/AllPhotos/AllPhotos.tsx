@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { PhotoDTO } from './types';
-import { Container, PhotoItem, Image, Title, Description } from './styles';
+import { Container, PhotoItem, Image, Title, Description, PhotoInfo } from './styles';
 
 const AllPhotos: React.FC = () => {
   const [photos, setPhotos] = useState<PhotoDTO[]>([]);
@@ -10,11 +10,9 @@ const AllPhotos: React.FC = () => {
   useEffect(() => {
     axios.get('/api/photos/all')
       .then(response => {
-        console.log('API response:', response.data); // Отладочный вывод
         setPhotos(response.data);
       })
       .catch(error => {
-        console.error('Error fetching photos:', error);
         setError('Error fetching photos');
       });
   }, []);
@@ -27,9 +25,11 @@ const AllPhotos: React.FC = () => {
     <Container>
       {photos.map(photo => (
         <PhotoItem key={photo.id}>
-          <Image src={photo.url} alt={photo.title} onError={(e) => console.error('Image load error:', e)} />
+          <Image src={photo.url} alt={photo.title} />
+          <PhotoInfo>ID: {photo.id}</PhotoInfo>
           <Title>{photo.title}</Title>
           <Description>{photo.description}</Description>
+          <PhotoInfo>User ID: {photo.userId}</PhotoInfo>
         </PhotoItem>
       ))}
     </Container>
