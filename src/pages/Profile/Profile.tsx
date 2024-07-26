@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getProfile } from 'services/authService';
 import { UserDTO } from './types';
+import { mugchina } from 'assets';
 import {
   ProfileWrapper,
   ProfileTitle,
@@ -12,7 +13,8 @@ import {
   AvatarWrapper,
   AvatarImage,
   ProfileContainer,
-  ErrorButton
+  ErrorButton,
+  ProfileText
 } from './styles';
 import Button from 'components/Button/Button';
 
@@ -21,16 +23,16 @@ const Profile: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const data = await getProfile();
-        setProfile(data);
-      } catch (err) {
-        setError('Please log in to view your profile.');
-      }
-    };
+  const fetchProfile = async () => {
+    try {
+      const data = await getProfile();
+      setProfile(data);
+    } catch (err) {
+      setError('Please log in to view your profile.');
+    }
+  };
 
+  useEffect(() => {
     fetchProfile();
   }, []);
 
@@ -55,12 +57,12 @@ const Profile: React.FC = () => {
       {profile ? (
         <ProfileContainer>
           <AvatarWrapper>
-            <AvatarImage src={profile.avatarUrl || '/path/to/default/avatar.jpg'} alt='User Avatar' />
-            <Button name="Upload Photo" onClick={() => handleNavigate('/photos/upload')} />
+            <AvatarImage src={mugchina} alt='User Avatar' />
           </AvatarWrapper>
           <ProfileInfo>
-            <p>Username: {profile.username}</p>
-            <p>Email: {profile.email}</p>
+            <ProfileText>ID: {profile.id}</ProfileText>
+            <ProfileText>Username: {profile.username}</ProfileText>
+            <ProfileText>Email: {profile.email}</ProfileText>
           </ProfileInfo>
         </ProfileContainer>
       ) : (

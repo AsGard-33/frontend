@@ -33,10 +33,11 @@ export const AvatarWrapper = styled.div`
 `;
 
 export const AvatarImage = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-bottom: 10px;
+  width: 350px;
+  height: 450px;
+  object-fit: contain;
+  /* border-radius: 50%; */
+  /* margin-bottom: 10px; */
 `;
 
 export const ProfileErrorWrapper = styled.div`
@@ -72,4 +73,10 @@ export const ProfileContainer = styled.div`
 
 export const ErrorButton = styled.div`
 
+`;
+
+export const ProfileText = styled.p`
+  color: wheat;
+  font-weight: 900;
+  margin: 15px 0;
 `;

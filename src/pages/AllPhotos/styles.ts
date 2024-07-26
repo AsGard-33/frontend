@@ -14,14 +14,6 @@ export const PhotoItem = styled.div`
   border: 1px solid #ccc;
   border-radius: 8px;
   text-align: center;
-  background-color: white;
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
 `;
 
 export const Title = styled.h2`
@@ -35,6 +27,23 @@ export const Description = styled.p`
 `;
 
 export const PhotoInfo = styled.p`
-  font-size: 12px;
-  color: #999;
+  font-size: 14px;
+  color: #333;
+`;
+
+export const UploadButton = styled.button`
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+`;
+
+export const Image = styled.img`
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
 `;
