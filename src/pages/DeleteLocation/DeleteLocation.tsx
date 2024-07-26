@@ -19,7 +19,7 @@ const DeleteLocation: React.FC = () => {
       setSuccess(true);
       setError(null);
       setTimeout(() => {
-        navigate('/');
+        navigate('/locations');  // Перенаправление на страницу всех локаций после успешного удаления
       }, 2000);
     } catch (err) {
       setError('Failed to delete location');

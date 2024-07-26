@@ -54,11 +54,9 @@ const AllUsers: React.FC = () => {
         <ProfileCard
           key={user.id}
           profileData={{
-            firstName: user.username,
-            lastName: '',
-            career: '',
-            hairColor: '',
-            hobby: '',
+            id: user.id,
+            userName: user.username,
+            email: user.email,
           }}
           imgSrc="https://via.placeholder.com/150"
           onAddFriend={() => handleAddFriend(user.id)}

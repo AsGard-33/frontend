@@ -48,3 +48,9 @@ export const ErrorMessage = styled.div`
   color: red;
   margin-bottom: 1rem;
 `;
+
+export const SuccessMessage = styled.p`
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+`;

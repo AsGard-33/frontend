@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAllPhotos } from 'services/photoService'; // Импортируйте метод из сервиса
+import axios from 'axios';
 import { PhotoDTO } from './types';
 import { Container, PhotoItem, Image, Title, Description, PhotoInfo, UploadButton } from './styles';
 
@@ -10,17 +10,14 @@ const AllPhotos: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        const data = await getAllPhotos();
-        setPhotos(data);
-        console.log(data); // Проверка данных
-      } catch (err) {
+    axios.get('/api/photos/all')
+      .then(response => {
+        setPhotos(response.data);
+        console.log(response.data); // Проверка данных
+      })
+      .catch(error => {
         setError('Error fetching photos');
-      }
-    };
-
-    fetchPhotos();
+      });
   }, []);
 
   const handleUploadClick = () => {

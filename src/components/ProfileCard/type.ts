@@ -1,14 +1,10 @@
-export interface ProfileData {
-  firstName: string;
-  lastName: string;
-  career: string;
-  hairColor: string;
-  hobby: string;
-}
-
 export interface ProfileCardProps {
-  profileData: ProfileData;
+  profileData: {
+    id: number;
+    userName: string;
+    email: string;
+  };
   imgSrc: string;
   children?: React.ReactNode;
-  onAddFriend?: () => void;
+  onAddFriend: () => void;
 }

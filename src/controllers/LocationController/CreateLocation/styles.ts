@@ -4,42 +4,41 @@ export const CreateLocationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
-  background-color: #f7f7f7;
-  border-radius: 8px;
+  padding: 20px;
 `;
 
-export const Title = styled.h2`
-  margin-bottom: 1rem;
+export const Title = styled.h1`
+  margin-bottom: 20px;
 `;
 
 export const Input = styled.input`
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
-  max-width: 300px;
 `;
 
-export const CreateButton = styled.button`
-  padding: 0.5rem 1rem;
+export const Button = styled.button`
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
   border: none;
   border-radius: 4px;
-  background-color: #28a745;
-  color: white;
   cursor: pointer;
   &:hover {
-    background-color: #218838;
+    background-color: #0056b3;
   }
 `;
 
-export const ErrorMessage = styled.div`
+export const ErrorMessage = styled.p`
   color: red;
-  margin-top: 1rem;
+  margin-top: 10px;
 `;
 
-export const SuccessMessage = styled.div`
+export const SuccessMessage = styled.p`
   color: green;
-  margin-top: 1rem;
+  margin-top: 10px;
 `;
+

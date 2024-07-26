@@ -1,4 +1,3 @@
 export interface DeleteLocationProps {
-    id: string;
-  }
-  
+  id: number;
+}

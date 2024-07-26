@@ -11,6 +11,7 @@ export const AllUsersWrapper = styled.div`
 export const Title = styled.h1`
   width: 100%;
   text-align: center;
+  color: aliceblue;
 `;
 
 export const UserCard = styled.div`

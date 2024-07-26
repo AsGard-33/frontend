@@ -13,7 +13,7 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   border-radius: 4px;
   padding: 20px;
   background-color: ${({ isRed, disabled }) =>
-    disabled ? "#d3d3d3" : isRed ? "red" : "#486ffa"};
+    disabled ? "#d3d3d3" : isRed ? "red" : "rgba(19, 173, 35, 0.3)"};
   color: white;
   font-size: 16px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};

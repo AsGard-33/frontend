@@ -29,3 +29,17 @@ export const ErrorMessage = styled.div`
   color: red;
   margin-bottom: 20px;
 `;
+
+export const SuccessMessage = styled.p`
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+`;
+
+export const Input = styled.input`
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+`;

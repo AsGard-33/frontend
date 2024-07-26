@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { UpdateLocationWrapper, Title, Form, Label, Input, Button, ErrorMessage } from './styles';
+import { UpdateLocationWrapper, Title, Form, Label, Input, Button, ErrorMessage, SuccessMessage } from './styles';
 import { LocationDTO } from './types';
 
 const UpdateLocation: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [location, setLocation] = useState<LocationDTO>({ id: parseInt(id || '0'), title: '', description: '' });
+  const navigate = useNavigate();
+  const [location, setLocation] = useState<LocationDTO>({ id: parseInt(id || '0'), title: '', description: '', image: '', coordinates: '' });
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchLocation = async () => {
@@ -37,7 +39,10 @@ const UpdateLocation: React.FC = () => {
     try {
       await axios.put(`/api/locations/${id}`, location);
       setError(null);
-      alert('Location updated successfully');
+      setSuccess(true);
+      setTimeout(() => {
+        navigate('/locations');
+      }, 2000);
     } catch (err) {
       setError('Failed to update location');
     }
@@ -47,6 +52,7 @@ const UpdateLocation: React.FC = () => {
     <UpdateLocationWrapper>
       <Title>Update Location</Title>
       {error && <ErrorMessage>{error}</ErrorMessage>}
+      {success && <SuccessMessage>Location updated successfully!</SuccessMessage>}
       <Form onSubmit={handleSubmit}>
         <Label htmlFor="title">Title:</Label>
         <Input
@@ -64,6 +70,22 @@ const UpdateLocation: React.FC = () => {
           value={location.description}
           onChange={handleChange}
         />
+        <Label htmlFor="image">Image URL:</Label>
+        <Input
+          id="image"
+          name="image"
+          type="text"
+          value={location.image}
+          onChange={handleChange}
+        />
+        <Label htmlFor="coordinates">Coordinates:</Label>
+        <Input
+          id="coordinates"
+          name="coordinates"
+          type="text"
+          value={location.coordinates}
+          onChange={handleChange}
+        />
         <Button type="submit">Update Location</Button>
       </Form>
     </UpdateLocationWrapper>
@@ -71,4 +93,3 @@ const UpdateLocation: React.FC = () => {
 };
 
 export default UpdateLocation;
-

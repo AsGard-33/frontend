@@ -10,7 +10,8 @@ export const ProfileCardWraper = styled.div`
   border: 1px solid #082229;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 10px 5px 5px rgba(217, 104, 11, 0.562);
+  box-shadow: 10px 5px 5px rgba(134, 194, 140, 0.3);
+  background-color: rgba(134, 194, 140, 0.3);
 `;
 
 export const AvatarControl = styled.div`
@@ -27,13 +28,13 @@ export const AvatarH2 = styled.h2``;
 export const AvatarP = styled.p``;
 
 export const AddFriendButton = styled.button`
-  background-color: #007bff;
+  background-color: #86c28c;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   &:hover {
-    background-color: #0056b3;
+    background-color: #1e8a29;
   }
 `;

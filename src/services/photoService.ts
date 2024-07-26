@@ -1,15 +1,6 @@
 import axios from 'axios';
 import { PhotoDTO } from 'pages/UploadPhoto/types';
 
-// export const uploadPhoto = async (formData: FormData): Promise<PhotoDTO> => {
-//   const response = await axios.post('/api/photos', formData, {
-//     headers: {
-//       'Content-Type': 'multipart/form-data',
-//     },
-//   });
-//   return response.data;
-// };
-
 export const getAllPhotosByUser = async (userId: number): Promise<PhotoDTO[]> => {
   const response = await axios.get(`/api/photos/user/${userId}`);
   return response.data;

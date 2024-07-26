@@ -15,8 +15,9 @@ import AllUsers from "pages/AllUsers/AllUsers";
 import SearchUserByUsername from "pages/SearchUserByUsername/SearchUserByUsername";
 import DeleteUser from "pages/DeleteUser/DeleteUser";
 import AllLocations from "pages/AllLocations/AllLocations";
+import CreateLocationPage from "pages/CreateLocationPage/CreateLocationPage";
 import LocationDetail from "pages/LocationDetail/LocationDetail";
-import UpdateLocation from "pages/UpdateLocation/UpdateLocation";
+import UpdateLocationPage from "pages/UpdateLocation/UpdateLocationPage";
 import DeleteLocation from "pages/DeleteLocation/DeleteLocation";
 import SearchLocationByTitle from "pages/SearchLocationByTitle/SearchLocationByTitle";
 import AddFriend from "pages/AddFriend/AddFriend";
@@ -35,7 +36,7 @@ import AllMessagesByConversation from "pages/AllMessagesByConversation/AllMessag
 import DeleteMessage from "pages/DeleteMessage/DeleteMessage";
 import AllNotificationsByUser from "pages/AllNotificationsByUser/AllNotificationsByUser";
 import UpdateNotificationStatus from "pages/UpdateNotificationStatus/UpdateNotificationStatus";
-import UploadPhotoPages from "pages/UploadPhoto/UploadPhotoPages";
+import UploadPhotoPage from "pages/UploadPhoto/UploadPhotoPages";
 import AllPhotos from "pages/AllPhotos/AllPhotos";
 import AllPhotosByUser from "pages/AllPhotosByUser/AllPhotosByUser";
 import DeletePhoto from "pages/DeletePhoto/DeletePhoto";
@@ -60,10 +61,11 @@ function App() {
           <Route path="/users/search" element={<SearchUserByUsername />} />
           <Route path="/users/delete" element={<DeleteUser />} />
           <Route path="/locations" element={<AllLocations />} />
+          <Route path="/create-location" element={<CreateLocationPage />} />
           <Route path="/locations/:id" element={<LocationDetail />} />
-          <Route path="/locations/update/:id" element={<UpdateLocation />} />
-          <Route path="/locations/delete/:id" element={<DeleteLocation />} />
-          <Route path="/locations/search" element={<SearchLocationByTitle />} />
+          <Route path="/update-location/:id" element={<UpdateLocationPage />} />
+          <Route path="/delete-location/:id" element={<DeleteLocation />} />
+          <Route path="/search-location" element={<SearchLocationByTitle />} />
           <Route path="/friends/add/:userId/:friendId" element={<AddFriend />} />
           <Route path="/friends/:userId" element={<AllFriends />} />
           <Route path="/friends/remove/:userId/:friendId" element={<RemoveFriend />} />
@@ -80,7 +82,7 @@ function App() {
           <Route path="/messages/delete/:id" element={<DeleteMessage />} />
           <Route path="/notifications/user/:userId" element={<AllNotificationsByUser />} />
           <Route path="/notifications/update/:id" element={<UpdateNotificationStatus />} />
-          <Route path="/photos/upload" element={<UploadPhotoPages />} />
+          <Route path="/photos/upload" element={<UploadPhotoPage />} />
           <Route path="/photos" element={<AllPhotos />} />
           <Route path="/photos/user/:userId" element={<AllPhotosByUser />} />
           <Route path="/photos/delete/:photoId" element={<DeletePhoto />} />

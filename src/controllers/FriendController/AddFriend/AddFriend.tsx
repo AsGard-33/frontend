@@ -40,8 +40,10 @@ const AddFriend: React.FC = () => {
       {friend && (
         <div>
           <h3>Друг добавлен:</h3>
-          <p>ID: {friend.id}</p>
-          <p>Имя: {friend.name}</p>
+          <p>Пользователь ID: {friend.user.id}</p>
+          <p>Пользователь имя: {friend.user.username}</p>
+          <p>Друг ID: {friend.friend.id}</p>
+          <p>Друг имя: {friend.friend.username}</p>
         </div>
       )}
     </AddFriendWrapper>

@@ -4,11 +4,11 @@ import { ProfileCardWraper, AvatarControl, ProfileAvatar, AvatarH2, AvatarP, Add
 function ProfileCard({
   profileData,
   imgSrc,
-  children = <h1>User Card</h1>,
+  children = <h1>User: {profileData.id}</h1>,
   onAddFriend,
 }: ProfileCardProps) {
-  const normalizeFirstLastName = () => {
-    return `${profileData.firstName} ${profileData.lastName}`;
+  const getUserName = () => {
+    return `${profileData.userName}`;
   };
 
   return (
@@ -17,14 +17,11 @@ function ProfileCard({
       <AvatarControl>
         <ProfileAvatar alt="Profile Avatar" src={imgSrc} />
       </AvatarControl>
-      <AvatarH2>{normalizeFirstLastName()}</AvatarH2>
-      <AvatarP>Career: {profileData.career}</AvatarP>
-      <AvatarP>Hair Color: {profileData.hairColor}</AvatarP>
-      <AvatarP>Hobby: {profileData.hobby}</AvatarP>
+      <AvatarH2>{getUserName()}</AvatarH2>
+      <AvatarP>Email: {profileData.email}</AvatarP>
       <AddFriendButton onClick={onAddFriend}>Add Friend</AddFriendButton>
     </ProfileCardWraper>
   );
 }
 
 export default ProfileCard;
-
