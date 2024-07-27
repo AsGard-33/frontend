@@ -5,7 +5,7 @@ export const UpdateLocationWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: #f7f7f7;
+  background-color: #9fbdcf94;
   border-radius: 8px;
 `;
 
@@ -33,14 +33,14 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   padding: 0.5rem;
-  background-color: #007bff;
+  background-color: #13ad238a;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #2a144f;
   }
 `;
 

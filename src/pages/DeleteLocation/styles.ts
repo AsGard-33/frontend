@@ -7,6 +7,7 @@ export const DeleteLocationWrapper = styled.div`
 export const Title = styled.h1`
   font-size: 24px;
   margin-bottom: 20px;
+  color: aliceblue;
 `;
 
 export const Input = styled.input`
