@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Paris, newYork, Sydney } from "assets";
 import {
   HomeWrapper,
@@ -12,10 +12,22 @@ import {
   PhotoDescription,
   MessageBox,
 } from "./styles";
+import Lightbox from "components/Lightbox/Lightbox";
 
 const Home: React.FC = () => {
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+
+  const openLightbox = (image: string) => {
+    setLightboxImage(image);
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
+
   return (
     <HomeWrapper>
+      {lightboxImage && <Lightbox image={lightboxImage} onClose={closeLightbox} />}
       <MessageBox>
         <HomeTitle>Welcome to Our Travel Site</HomeTitle>
         <InfoSection>
@@ -33,7 +45,7 @@ const Home: React.FC = () => {
         </InfoSection>
       </MessageBox>
       <PhotosSection>
-        <PhotoCard>
+        <PhotoCard onClick={() => openLightbox(Paris)}>
           <PhotoContainer>
             <img src={Paris} alt="Eiffel Tower" />
           </PhotoContainer>
@@ -42,7 +54,7 @@ const Home: React.FC = () => {
             Paris, France - Eiffel Tower at sunset
           </PhotoDescription>
         </PhotoCard>
-        <PhotoCard>
+        <PhotoCard onClick={() => openLightbox(newYork)}>
           <PhotoContainer>
             <img src={newYork} alt="Statue of Liberty" />
           </PhotoContainer>
@@ -51,7 +63,7 @@ const Home: React.FC = () => {
             New York, USA - Statue of Liberty with blue sky
           </PhotoDescription>
         </PhotoCard>
-        <PhotoCard>
+        <PhotoCard onClick={() => openLightbox(Sydney)}>
           <PhotoContainer>
             <img src={Sydney} alt="Sydney Opera House" />
           </PhotoContainer>
@@ -66,3 +78,4 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+

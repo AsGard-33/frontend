@@ -1,3 +1,4 @@
+// styles.ts
 import styled from '@emotion/styled';
 
 export const HomeWrapper = styled.div`
@@ -74,6 +75,7 @@ export const PhotoCard = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.06);
