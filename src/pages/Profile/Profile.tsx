@@ -13,12 +13,17 @@ import {
   AvatarWrapper,
   AvatarImage,
   ProfileContainer,
+  Button1,
   ErrorButton,
   ProfileText
 } from './styles';
 import Button from 'components/Button/Button';
 
-const Profile: React.FC = () => {
+interface ProfileProps {
+  profileUpdated: boolean;
+}
+
+const Profile: React.FC<ProfileProps> = ({ profileUpdated }) => {
   const [profile, setProfile] = useState<UserDTO | null>(null);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -35,6 +40,12 @@ const Profile: React.FC = () => {
   useEffect(() => {
     fetchProfile();
   }, []);
+
+  useEffect(() => {
+    if (profileUpdated) {
+      fetchProfile();
+    }
+  }, [profileUpdated]);
 
   const handleNavigate = (path: string) => {
     navigate(path);
@@ -57,7 +68,12 @@ const Profile: React.FC = () => {
       {profile ? (
         <ProfileContainer>
           <AvatarWrapper>
-            <AvatarImage src={mugchina} alt='User Avatar' />
+            <div>
+            <AvatarImage src={profile.avatarUrl || mugchina} alt='User Avatar' />
+            </div>
+            <Button1>
+            <Button name="Update Avatar" onClick={() => handleNavigate(`/users/${profile.id}/avatar`)} />
+            </Button1>
           </AvatarWrapper>
           <ProfileInfo>
             <ProfileText>ID: {profile.id}</ProfileText>

@@ -26,6 +26,9 @@ export const LocationItem = styled.div`
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const ErrorMessage = styled.div`

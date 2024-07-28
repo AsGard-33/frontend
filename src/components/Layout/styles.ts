@@ -53,8 +53,9 @@ export const Main = styled.main`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed; /* Делает фон статическим */
+  overflow: auto; /* Добавляем прокрутку для содержимого */
 `;
-
 export const Footer = styled.footer`
   display: flex;
   justify-content: space-between;

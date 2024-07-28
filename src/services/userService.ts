@@ -44,3 +44,13 @@ export const searchUserByUsername = async (username: string): Promise<UserDetail
 export const deleteUser = async (username: string, email: string, password: string): Promise<void> => {
     await axios.delete(`/api/users/delete`, { data: { username, email, password } });
 };
+
+export const updateAvatar = async (userId: number, avatarUrl: string): Promise<UserDTO | null> => {
+  try {
+    const response = await axios.put(`/api/users/${userId}/avatar`, { avatarUrl });
+    return response.data;  // Предполагается, что сервер возвращает обновленный объект UserDTO
+  } catch (error) {
+    console.error('Error updating avatar:', error);
+    return null;
+  }
+};

@@ -10,7 +10,7 @@ export const ProfileCardWraper = styled.div`
   border: 1px solid #082229;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 10px 5px 5px rgba(134, 194, 140, 0.3);
+  /* box-shadow: 10px 5px 5px rgba(134, 194, 140, 0.3); */
   background-color: rgba(134, 194, 140, 0.3);
 `;
 

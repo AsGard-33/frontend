@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import GlobalStyles from "styles/GlobalStyles";
 import Layout from "components/Layout/Layout";
 
@@ -24,10 +25,10 @@ import AddFriend from "pages/AddFriend/AddFriend";
 import AllFriends from "pages/AllFriends/AllFriends";
 import RemoveFriend from "pages/RemoveFriend/RemoveFriend";
 import AllBlogsByUser from "pages/AllBlogsByUser/AllBlogsByUser";
-import BlogDetail from "pages/BlogDetail/BlogDetail";
+import AllBlogsById from 'pages/AllBlogsById/AllBlogsById';
 import CreateBlog from "pages/CreateBlog/CreateBlog";
 import UpdateBlog from "pages/UpdateBlog/UpdateBlog";
-import AllBlogsPage from "pages/AllBlogs/AllBlogs";
+import AllBlogsPage from 'pages/AllBlogs/AllBlogs';
 import DeleteBlog from "pages/DeleteBlog/DeleteBlog";
 import SearchBlogsByTitle from "pages/SearchBlogsByTitle/SearchBlogsByTitle";
 import AllMessagesBySender from "pages/AllMessagesBySender/AllMessagesBySender";
@@ -38,12 +39,24 @@ import AllNotificationsByUser from "pages/AllNotificationsByUser/AllNotification
 import UpdateNotificationStatus from "pages/UpdateNotificationStatus/UpdateNotificationStatus";
 import UploadPhotoPage from "pages/UploadPhoto/UploadPhotoPages";
 import AllPhotos from "pages/AllPhotos/AllPhotos";
+import UpdateAvatarPage from "pages/UpdateAvatarPage/UpdateAvatarPage";
 import AllPhotosByUser from "pages/AllPhotosByUser/AllPhotosByUser";
 import DeletePhoto from "pages/DeletePhoto/DeletePhoto";
 import SearchPhotosByTitle from "pages/SearchPhotosByTitle/SearchPhotosByTitle";
 import Logout from "pages/Logout/Logout";
 
 function App() {
+  const [profileUpdated, setProfileUpdated] = useState(false);
+
+  const handleAvatarUpdate = () => {
+    setProfileUpdated(true);
+  };
+
+  useEffect(() => {
+    if (profileUpdated) {
+      setProfileUpdated(false);
+    }
+  }, [profileUpdated]);
   return (
     <HashRouter>
       <GlobalStyles />
@@ -53,7 +66,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile profileUpdated={profileUpdated} />} />
           <Route path="/users/:id" element={<UserDetail />} />
           <Route path="/users/update/:id" element={<UserUpdate />} />
           <Route path="/users/add-favorite/:userId/:locationId" element={<AddFavoriteLocation />} />
@@ -70,12 +83,12 @@ function App() {
           <Route path="/friends/:userId" element={<AllFriends />} />
           <Route path="/friends/remove/:userId/:friendId" element={<RemoveFriend />} />
           <Route path="/blogs/user/:userId" element={<AllBlogsByUser />} />
-          <Route path="/blogs/:id" element={<BlogDetail />} />
-          <Route path="/blogs/create" element={<CreateBlog />} />
+          <Route path="/search-blogs-by-id" element={<AllBlogsById />} />
+          <Route path="/create-blog" element={<CreateBlog />} />
           <Route path="/blogs" element={<AllBlogsPage />} /> 
-          <Route path="/blogs/update/:id" element={<UpdateBlog />} />
-          <Route path="/blogs/delete/:id" element={<DeleteBlog />} />
-          <Route path="/blogs/search/:title" element={<SearchBlogsByTitle />} />
+          <Route path="/update-blog/:id" element={<UpdateBlog />} />
+          <Route path="/delete-blog/:id" element={<DeleteBlog />} />
+          <Route path="/search-blogs-by-title" element={<SearchBlogsByTitle />} />
           <Route path="/messages/sender/:senderId" element={<AllMessagesBySender />} />
           <Route path="/messages/recipient/:recipientId" element={<AllMessagesByRecipient />} />
           <Route path="/messages/conversation/:conversationId" element={<AllMessagesByConversation />} />
@@ -85,6 +98,7 @@ function App() {
           <Route path="/photos/upload" element={<UploadPhotoPage />} />
           <Route path="/photos" element={<AllPhotos />} />
           <Route path="/photos/user/:userId" element={<AllPhotosByUser />} />
+          <Route path="/users/:userId/avatar" element={<UpdateAvatarPage onAvatarUpdate={handleAvatarUpdate} />} />
           <Route path="/photos/delete/:photoId" element={<DeletePhoto />} />
           <Route path="/photos/search/:title" element={<SearchPhotosByTitle />} />
           <Route path="/logout" element={<Logout />} />

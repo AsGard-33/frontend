@@ -25,7 +25,8 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   
   &:hover {
     background-color: ${({ isRed, disabled }) =>
-      disabled ? "#d3d3d3" : isRed ? "darkred" : "#2a144f"};
+      disabled ? "#08174d" : isRed ? "darkred" : "#2bfcb0"};
+      color: black;
   }
 
   @media (max-width: 768px) {

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { deleteBlog } from 'services/blogService';
-import { DeleteBlogWrapper, Title, ErrorMessage, SuccessMessage } from './styles';
-import Button from 'components/Button/Button';
+import { DeleteBlogWrapper, Title, ErrorMessage, SuccessMessage, RedButton } from './styles';
 
 const DeleteBlog: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,7 +15,7 @@ const DeleteBlog: React.FC = () => {
         setError('Blog ID is required');
         return;
       }
-      await deleteBlog(parseInt(id));
+      await deleteBlog(parseInt(id, 10));
       setSuccess(true);
       setError(null);
       setTimeout(() => navigate('/blogs'), 2000); // Redirect to blogs list after 2 seconds
@@ -31,7 +30,7 @@ const DeleteBlog: React.FC = () => {
       <Title>Delete Blog</Title>
       {error && <ErrorMessage>{error}</ErrorMessage>}
       {success && <SuccessMessage>Blog deleted successfully!</SuccessMessage>}
-      <Button name="Delete Blog" onClick={handleDelete} />
+      <RedButton onClick={handleDelete}>Delete Blog</RedButton>
     </DeleteBlogWrapper>
   );
 };

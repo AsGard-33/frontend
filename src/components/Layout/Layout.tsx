@@ -100,15 +100,6 @@ function Layout({ children }: LayoutProps) {
           >
             Login
           </StyledNavLink>
-
-          <StyledNavLink
-            style={({ isActive }) => ({
-              textDecoration: isActive ? "underline" : "none",
-            })}
-            to="/logout"
-          >
-            Logout
-          </StyledNavLink>
         </NavContainerFooter>
         <SocialIcons>
           <IconLink href="https://www.instagram.com/oleksiinazarov/" target="_blank" rel="noopener noreferrer">

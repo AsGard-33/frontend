@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createBlog } from 'services/blogService';
 import { BlogCreateDTO } from './types';
 import { CreateBlogWrapper, Title, Input, TextArea, ErrorMessage, SuccessMessage } from './styles';
@@ -7,9 +8,10 @@ import Button from 'components/Button/Button';
 const CreateBlog: React.FC = () => {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
-  const [userId, setUserId] = useState<string>('');  // Добавляем состояние для userId
+  const [userId, setUserId] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     try {
@@ -23,7 +25,8 @@ const CreateBlog: React.FC = () => {
       setError(null);
       setTitle('');
       setContent('');
-      setUserId('');  // Сбрасываем значение userId после успешного создания блога
+      setUserId('');
+      navigate('/blogs'); // Перенаправление на страницу со всеми блогами после успешного создания
     } catch (err) {
       setError('Failed to create blog');
       setSuccess(false);

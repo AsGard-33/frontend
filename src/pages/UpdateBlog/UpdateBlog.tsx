@@ -36,7 +36,7 @@ const UpdateBlog: React.FC = () => {
       await updateBlog(blog.id, blog);
       setSuccess(true);
       setError(null);
-      setTimeout(() => navigate(`/blogs/${blog.id}`), 2000);
+      setTimeout(() => navigate('/blogs'), 2000); // Переход на страницу всех блогов через 2 секунды после успешного обновления
     } catch (err) {
       setError('Failed to update blog');
       setSuccess(false);

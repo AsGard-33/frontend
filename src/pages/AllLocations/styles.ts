@@ -30,6 +30,8 @@ export const LocationCard = styled.div`
   margin: 10px 0;
   width: 300px;
   background-color: #00020394;
+  flex-grow: 1; /* Позволяет карточке расти вправо */
+  min-width: 900px;
 
   @media (max-width: 768px) {
     width: 100%;

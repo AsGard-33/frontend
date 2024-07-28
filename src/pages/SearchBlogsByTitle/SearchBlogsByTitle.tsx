@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { searchBlogsByTitle } from 'services/blogService';
 import { BlogCreateDTO } from './types';
 import { SearchBlogsWrapper, Title, ErrorMessage, SuccessMessage, BlogsList, BlogItem } from './styles';
@@ -9,6 +10,7 @@ const SearchBlogsByTitle: React.FC = () => {
   const [blogs, setBlogs] = useState<BlogCreateDTO[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleSearch = async () => {
     try {
@@ -26,6 +28,10 @@ const SearchBlogsByTitle: React.FC = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate('/blogs');
+  };
+
   return (
     <SearchBlogsWrapper>
       <Title>Search Blogs by Title</Title>
@@ -38,6 +44,7 @@ const SearchBlogsByTitle: React.FC = () => {
         placeholder="Enter Blog Title"
       />
       <Button name="Search Blogs" onClick={handleSearch} />
+      <Button name="Back to All Blogs" onClick={handleBack} />
       <BlogsList>
         {blogs.map((blog) => (
           <BlogItem key={blog.id}>

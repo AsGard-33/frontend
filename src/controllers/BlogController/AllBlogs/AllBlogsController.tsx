@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Blog } from './types'; // Типы для данных блога
-import { Container } from './styles'; // Стилизованный контейнер
+import { Container, BlogList, BlogCard } from './styles'; // Стилизованные компоненты
 
 export const AllBlogController = () => {
     const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -25,12 +25,14 @@ export const AllBlogController = () => {
 
     return (
         <Container>
-            {blogs.map(blog => (
-                <div key={blog.id}>
-                    <h2>{blog.title}</h2>
-                    <p>{blog.content}</p>
-                </div>
-            ))}
+            <BlogList>
+                {blogs.map(blog => (
+                    <BlogCard key={blog.id}>
+                        <h2>{blog.title}</h2>
+                        <p>{blog.content}</p>
+                    </BlogCard>
+                ))}
+            </BlogList>
         </Container>
     );
 };

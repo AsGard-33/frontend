@@ -12,7 +12,8 @@ export const ProfileWrapper = styled.div`
 `;
 
 export const ProfileTitle = styled.h1`
-  font-size: 24px;
+  font-size: 33px;
+  color: antiquewhite;
 
   @media (max-width: 768px) {
     font-size: 20px;
@@ -47,7 +48,6 @@ export const AvatarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
 `;
 
 export const AvatarImage = styled.img`
@@ -102,4 +102,17 @@ export const ProfileText = styled.p`
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
+`;
+
+export const AvatarInput = styled.input`
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+export const Button1 = styled.div`
+margin-top: 20px;
+width: 200px;
+
 `;
