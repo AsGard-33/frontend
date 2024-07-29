@@ -95,7 +95,7 @@ const Profile: React.FC<ProfileProps> = ({ profileUpdated }) => {
           </StyledNavLink>
         </NavContainer>
       </Header>
-      <ProfileTitle>Profile</ProfileTitle>
+      <ProfileTitle></ProfileTitle>
       {profile ? (
         <ProfileContainer>
           <AvatarWrapper>
