@@ -6,9 +6,9 @@ interface Colors {
 }
   
 export const colors: Colors = {
-  primary: "rgb(26, 35, 53)",
+  primary: "rgb(129, 130, 130)",
   secondaryBlue: "#1f27f5",
-  transparentPrimary: "rgba(26, 35, 53, 1)",
+  transparentPrimary: "rgba(0, 7, 10, 1)",
   transparentSecondaryBlue: "rgba(31, 39, 245, 0.5)" 
 };
   

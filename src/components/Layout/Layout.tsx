@@ -42,16 +42,16 @@ function Layout({ children }: LayoutProps) {
             Register
           </StyledNavLink>
 
-         
-
           <StyledNavLink
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
-            to="/profile"
+            to="/login"
           >
-            Profile
+            Login
           </StyledNavLink>
+
+          
 
         </NavContainer>
       </Header>

@@ -61,3 +61,4 @@ const AllPhotos: React.FC = () => {
 }
 
 export default AllPhotos;
+
