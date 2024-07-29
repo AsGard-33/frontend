@@ -12,7 +12,9 @@ import {
   BlogTitle,
   BlogContent,
   BlogID,
-  BlogActions
+  BlogActions,
+  ButtonBoxon,
+  ProfileButton // Импортируем стили для кнопки Profile
 } from './styles';
 
 const AllBlogsPage: React.FC = () => {
@@ -38,6 +40,9 @@ const AllBlogsPage: React.FC = () => {
         <NavLink onClick={() => navigate('/search-blogs-by-id')}>Search Blogs by ID</NavLink>
       </Sidebar>
       <div>
+        <ButtonBoxon onClick={() => navigate('/profile')}>
+          <ProfileButton>Profile</ProfileButton>
+        </ButtonBoxon>
         <Title>All Blogs</Title>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <BlogList>

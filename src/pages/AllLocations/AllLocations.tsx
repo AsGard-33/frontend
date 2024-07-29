@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchAllLocations } from 'services/locationService';
 import { LocationDTO } from 'pages/AllLocations/types';
-import { AllLocationsWrapper, LocationCard, Title, Sidebar, NavLink, LocationTitle, LocationDescription, LocationImage, LocationCoordinates, LocationID, LocationActions } from './styles';
+import { AllLocationsWrapper, LocationCard, Title, Sidebar, NavLink, LocationTitle, ButtonBoxon, LocationDescription, LocationImage, LocationCoordinates, LocationID, LocationActions, ProfileButton } from './styles';
 import Lightbox from 'components/Lightbox/Lightbox';
 
 const AllLocations: React.FC = () => {
@@ -37,6 +37,9 @@ const AllLocations: React.FC = () => {
         <NavLink onClick={() => navigate('/search-location')}>Search Location</NavLink>
       </Sidebar>
       <div>
+        <ButtonBoxon onClick={() => navigate('/profile')}>
+          <ProfileButton>Profile</ProfileButton>
+        </ButtonBoxon>
         <Title>All Locations</Title>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <div>

@@ -79,14 +79,6 @@ const Profile: React.FC<ProfileProps> = ({ profileUpdated }) => {
         <NavContainer>
           <StyledNavLink
             style={({ isActive }) => ({
-              textDecoration: isActive ? 'underline' : 'none',
-            })}
-            to="/profile"
-          >
-            Profile
-          </StyledNavLink>
-          <StyledNavLink
-            style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
             to="/logout"
@@ -128,3 +120,4 @@ const Profile: React.FC<ProfileProps> = ({ profileUpdated }) => {
 };
 
 export default Profile;
+

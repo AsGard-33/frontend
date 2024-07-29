@@ -21,3 +21,18 @@ export const UserCard = styled.div`
   margin: 8px;
   text-align: center;
 `;
+
+export const ProfileButton = styled.button`
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: rgba(81, 83, 84, 0.3);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  &:hover {
+    background-color: #fcfcfc;
+    color: black;
+  }
+`;

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAllUsers, addFavoriteLocation } from 'services/userService';
 import { UserDetailProps } from 'pages/UserDetail/types';
-import { AllUsersWrapper, Title } from './styles';
+import { AllUsersWrapper, Title, ProfileButton } from './styles'; // Добавляем стили для кнопки Profile
 import ProfileCard from 'components/ProfileCard/ProfileCard';
 import { getProfile } from 'services/authService';
+import { NavLink } from 'react-router-dom'; // Импортируем NavLink
 
 const AllUsers: React.FC = () => {
   const [users, setUsers] = useState<UserDetailProps[]>([]);
@@ -48,6 +49,9 @@ const AllUsers: React.FC = () => {
 
   return (
     <AllUsersWrapper>
+      <NavLink to="/profile">
+        <ProfileButton>Profile</ProfileButton>
+      </NavLink>
       <Title>All Users</Title>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {users.map((user) => (

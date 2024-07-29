@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Lightbox from 'components/Lightbox/Lightbox'; // Импортируем Lightbox
 import { PhotoDTO } from './types';
-import { Container, PhotoItem, Image, Title, Description, PhotoInfo, UploadButton } from './styles';
+import { Container, PhotoItem, Image, Title, Description,ButtonBoxon, PhotoInfo, UploadButton, ProfileButton } from './styles'; // Импортируем стили для ProfileButton
 
 const AllPhotos: React.FC = () => {
   const [photos, setPhotos] = useState<PhotoDTO[]>([]);
@@ -41,6 +41,9 @@ const AllPhotos: React.FC = () => {
   return (
     <Container>
       {lightboxImage && <Lightbox image={lightboxImage} onClose={closeLightbox} />} {/* Lightbox для выбранного изображения */}
+      <ButtonBoxon onClick={() => navigate('/profile')}>
+        <ProfileButton>Profile</ProfileButton>
+      </ButtonBoxon>
       <UploadButton onClick={handleUploadClick}>Upload Photo</UploadButton>
       {photos.map(photo => (
         <PhotoItem key={photo.id}>
@@ -61,4 +64,3 @@ const AllPhotos: React.FC = () => {
 }
 
 export default AllPhotos;
-
