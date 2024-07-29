@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { colors } from "styles/colors";
+import { NavLink } from "react-router-dom";
 
 export const ProfileWrapper = styled.div`
   padding: 20px;
@@ -90,14 +92,16 @@ export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
 `;
 
 export const ErrorButton = styled.div``;
 
 export const ProfileText = styled.p`
-  color: wheat;
+  color: black;
   font-weight: 900;
   margin: 15px 0;
+  font-size: 23px;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -115,4 +119,28 @@ export const Button1 = styled.div`
 margin-top: 20px;
 width: 200px;
 
+`;
+
+export const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 33%;
+  height: fit-content;
+  background-color: ${colors.transparentPrimary};
+  box-shadow: 0 13px 10px rgb(0, 7, 10);
+  color: white;
+  position: relative;
+`;
+
+export const NavContainer = styled.nav`
+  display: flex;
+  gap: 10px;
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
 `;

@@ -31,7 +31,7 @@ export const LocationCard = styled.div`
   width: 300px;
   background-color: #00020394;
   flex-grow: 1; /* Позволяет карточке расти вправо */
-  min-width: 900px;
+  min-width: 500px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -125,7 +125,7 @@ export const LocationImage = styled.img`
 
 export const LocationCoordinates = styled.p`
   font-size: 0.9em;
-  color: #999;
+  color: white;
 
   @media (max-width: 768px) {
     font-size: 0.8em;
@@ -134,7 +134,7 @@ export const LocationCoordinates = styled.p`
 
 export const LocationID = styled.p`
   font-size: 0.9em;
-  color: #999;
+  color: white;
 
   @media (max-width: 768px) {
     font-size: 0.8em;

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Paris, newYork, Sydney } from "assets";
+import React from 'react';
+import Lightbox from 'components/Lightbox/Lightbox';
+import { Paris, newYork, Sydney } from 'assets';
 import {
   HomeWrapper,
   HomeTitle,
@@ -11,11 +12,10 @@ import {
   PhotoTitle,
   PhotoDescription,
   MessageBox,
-} from "./styles";
-import Lightbox from "components/Lightbox/Lightbox";
+} from './styles';
 
-const Home: React.FC = () => {
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+const HomePage: React.FC = () => {
+  const [lightboxImage, setLightboxImage] = React.useState<string | null>(null);
 
   const openLightbox = (image: string) => {
     setLightboxImage(image);
@@ -77,5 +77,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
-
+export default HomePage;

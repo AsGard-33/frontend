@@ -17,7 +17,7 @@ export const Header = styled.header`
   width: 100%;
   height: fit-content;
   background-color: ${colors.transparentPrimary};
-  box-shadow: 0 13px 10px rgb(3, 84, 102);
+  box-shadow: 0 13px 10px rgb(0, 7, 10);
   color: white;
   position: relative;
 `;
@@ -63,8 +63,8 @@ export const Footer = styled.footer`
   padding: 30px;
   width: 100%;
   height: 150px;
-  background-color: ${colors.transparentPrimary};
-  box-shadow: 0 -10px 10px rgb(3, 84, 102);
+  background-color: ${colors.primary};
+  box-shadow: 0 -10px 10px rgb(0, 7, 10);
   color: white;
   position: relative;
   z-index: 10;
@@ -85,6 +85,20 @@ export const IconLink = styled.a`
   color: white;
   font-size: 24px;
   &:hover {
-    color: ${colors.secondaryBlue};
+    color: ${colors.transparentPrimary};
+  }
+`;
+
+export const LogoutLink = styled.button`
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    text-decoration: underline;
   }
 `;

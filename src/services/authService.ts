@@ -4,8 +4,8 @@ import { UserDTO } from 'pages/Profile/types';
 export const login = async (data: { username: string; password: string }) => {
   const response = await axios.post('/api/auth/login', data);
   if (response.status === 200) {
-    document.cookie = `jwtToken=${response.data.jwtToken}; path=/; secure; HttpOnly`;
-    document.cookie = `refreshToken=${response.data.refreshToken}; path=/; secure; HttpOnly`;
+    document.cookie = `jwtToken=${response.data.jwtToken}; path=/; secure`;
+    document.cookie = `refreshToken=${response.data.refreshToken}; path=/; secure`;
   } else {
     throw new Error('Login failed');
   }
@@ -14,7 +14,7 @@ export const login = async (data: { username: string; password: string }) => {
 export const register = async (data: { username: string; email: string; password: string }) => {
   const response = await axios.post('/api/auth/register', data);
   if (response.status === 200) {
-    document.cookie = `jwtToken=${response.data.jwtToken}; path=/; secure; HttpOnly`;
+    document.cookie = `jwtToken=${response.data.jwtToken}; path=/; secure`;
   } else {
     throw new Error('Registration failed');
   }

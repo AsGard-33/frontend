@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import { getProfile } from 'services/authService';
 import { UserDTO } from './types';
 import { mugchina } from 'assets';
@@ -15,7 +16,10 @@ import {
   ProfileContainer,
   Button1,
   ErrorButton,
-  ProfileText
+  ProfileText,
+  Header,
+  NavContainer,
+  StyledNavLink
 } from './styles';
 import Button from 'components/Button/Button';
 
@@ -51,6 +55,13 @@ const Profile: React.FC<ProfileProps> = ({ profileUpdated }) => {
     navigate(path);
   };
 
+  const handleLogout = () => {
+    Cookies.remove('jwtToken', { path: '/' });
+    Cookies.remove('refreshToken', { path: '/' });
+    navigate('/');
+    window.location.reload();
+  };
+
   if (error) {
     return (
       <ProfileErrorWrapper>
@@ -64,15 +75,35 @@ const Profile: React.FC<ProfileProps> = ({ profileUpdated }) => {
 
   return (
     <ProfileWrapper>
+      <Header>
+        <NavContainer>
+          <StyledNavLink
+            style={({ isActive }) => ({
+              textDecoration: isActive ? 'underline' : 'none',
+            })}
+            to="/profile"
+          >
+            Profile
+          </StyledNavLink>
+          <StyledNavLink
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+            to="/logout"
+          >
+            Logout
+          </StyledNavLink>
+        </NavContainer>
+      </Header>
       <ProfileTitle>Profile</ProfileTitle>
       {profile ? (
         <ProfileContainer>
           <AvatarWrapper>
             <div>
-            <AvatarImage src={profile.avatarUrl || mugchina} alt='User Avatar' />
+              <AvatarImage src={profile.avatarUrl || mugchina} alt='User Avatar' />
             </div>
             <Button1>
-            <Button name="Update Avatar" onClick={() => handleNavigate(`/users/${profile.id}/avatar`)} />
+              <Button name="Update Avatar" onClick={() => handleNavigate(`/users/${profile.id}/avatar`)} />
             </Button1>
           </AvatarWrapper>
           <ProfileInfo>

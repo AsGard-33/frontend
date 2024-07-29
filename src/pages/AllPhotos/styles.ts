@@ -14,12 +14,14 @@ export const PhotoItem = styled.div`
   border: 1px solid #ccc;
   border-radius: 8px;
   text-align: center;
-  background-color:  rgba(134, 194, 140, 0.3);
+  background-color:  rgba(81, 83, 84, 0.3);
 `;
 
 export const Title = styled.h2`
   font-size: 33px;
   margin: 10px 0;
+  color: #03588afe;
+  ;
 `;
 
 export const Description = styled.p`
@@ -33,7 +35,7 @@ export const PhotoInfo = styled.p`
 `;
 
 export const UploadButton = styled.button`
-  background-color: rgba(19, 173, 35, 0.3);
+  background-color: rgba(114, 126, 130, 0.3);
   height: 70px;
   width: 170px;
   color: white;
@@ -42,6 +44,10 @@ export const UploadButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 20px;
+  &:hover {
+    background-color: #fcfcfc;
+    color: black;
+  }
 `;
 
 export const Image = styled.img`

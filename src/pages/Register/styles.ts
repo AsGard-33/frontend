@@ -4,7 +4,7 @@ export const RegisterWrapper = styled.form`
   max-width: 400px;
   margin: auto;
   padding: 20px;
-  background-color: #d8e8dbd8;
+  background-color: #d9dadb;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 

@@ -42,23 +42,7 @@ function Layout({ children }: LayoutProps) {
             Register
           </StyledNavLink>
 
-          <StyledNavLink
-            style={({ isActive }) => ({
-              textDecoration: isActive ? "underline" : "none",
-            })}
-            to="/login"
-          >
-            Login
-          </StyledNavLink>
-
-          <StyledNavLink
-            style={({ isActive }) => ({
-              textDecoration: isActive ? "underline" : "none",
-            })}
-            to="/logout"
-          >
-            Logout
-          </StyledNavLink>
+         
 
           <StyledNavLink
             style={({ isActive }) => ({

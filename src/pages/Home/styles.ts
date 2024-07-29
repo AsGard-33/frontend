@@ -19,7 +19,7 @@ export const HomeWrapper = styled.div`
 export const HomeTitle = styled.h1`
   font-size: 36px;
   margin-bottom: 20px;
-  color: darkblue;
+  color: white;
 
   @media (max-width: 768px) {
     font-size: 24px;
@@ -31,7 +31,7 @@ export const HomeMessage = styled.p`
   font-size: 23px;
   text-align: left;
   max-width: 600px;
-  color: rgb(2, 40, 48);
+  color: black;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -70,7 +70,7 @@ export const PhotoCard = styled.div`
   flex-direction: column;
   align-items: center;
   width: 500px;
-  background: rgb(2, 40, 48);
+  background: rgb(217, 218, 219);
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
