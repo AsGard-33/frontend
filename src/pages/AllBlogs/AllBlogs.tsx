@@ -41,9 +41,9 @@ const AllBlogsPage: React.FC = () => {
       </Sidebar>
       <div>
         <ButtonBoxon onClick={() => navigate('/profile')}>
-          <ProfileButton>Profile</ProfileButton>
+          <ProfileButton>Back to my profile</ProfileButton>
         </ButtonBoxon>
-        <Title>All Blogs</Title>
+        <Title>Blogs</Title>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <BlogList>
           {blogs.map(blog => (

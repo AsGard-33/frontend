@@ -25,7 +25,7 @@ export const UserCard = styled.div`
 export const ProfileButton = styled.button`
   padding: 10px 20px;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 25px;
   cursor: pointer;
   background-color: rgba(81, 83, 84, 0.3);
   color: white;

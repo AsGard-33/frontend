@@ -50,7 +50,7 @@ const AllUsers: React.FC = () => {
   return (
     <AllUsersWrapper>
       <NavLink to="/profile">
-        <ProfileButton>Profile</ProfileButton>
+        <ProfileButton>back to my profile</ProfileButton>
       </NavLink>
       <Title>All Users</Title>
       {error && <p style={{ color: 'red' }}>{error}</p>}

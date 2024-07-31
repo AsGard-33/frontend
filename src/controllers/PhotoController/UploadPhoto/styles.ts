@@ -31,12 +31,13 @@ export const Button = styled.button`
   padding: 10px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: rgba(81, 83, 84, 0.3);
   color: white;
   cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #fcfcfc;
+    color: black;
   }
 `;
 

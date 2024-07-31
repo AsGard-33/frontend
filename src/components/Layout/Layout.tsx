@@ -51,6 +51,15 @@ function Layout({ children }: LayoutProps) {
             Login
           </StyledNavLink>
 
+          <StyledNavLink
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+            to="/profile"
+          >
+            Profile
+          </StyledNavLink>
+
           
 
         </NavContainer>

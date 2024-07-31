@@ -40,7 +40,7 @@ import UpdateNotificationStatus from "pages/UpdateNotificationStatus/UpdateNotif
 import UploadPhotoPage from "pages/UploadPhoto/UploadPhotoPages";
 import AllPhotos from "pages/AllPhotos/AllPhotos";
 import UpdateAvatarPage from "pages/UpdateAvatarPage/UpdateAvatarPage";
-import AllPhotosByUser from "pages/AllPhotosByUser/AllPhotosByUser";
+import SearchPhotosByUserId from "pages/AllPhotosByUser/AllPhotosByUser";
 import DeletePhoto from "pages/DeletePhoto/DeletePhoto";
 import SearchPhotosByTitle from "pages/SearchPhotosByTitle/SearchPhotosByTitle";
 import Logout from "pages/Logout/Logout";
@@ -97,10 +97,10 @@ function App() {
           <Route path="/notifications/update/:id" element={<UpdateNotificationStatus />} />
           <Route path="/photos/upload" element={<UploadPhotoPage />} />
           <Route path="/photos" element={<AllPhotos />} />
-          <Route path="/photos/user/:userId" element={<AllPhotosByUser />} />
+          <Route path="/search-photo-by-user-id" element={<SearchPhotosByUserId />} />
           <Route path="/users/:userId/avatar" element={<UpdateAvatarPage onAvatarUpdate={handleAvatarUpdate} />} />
           <Route path="/photos/delete/:photoId" element={<DeletePhoto />} />
-          <Route path="/photos/search/:title" element={<SearchPhotosByTitle />} />
+          <Route path="/search-photo-by-title" element={<SearchPhotosByTitle />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="*" element="Page Not Found" />
         </Routes>

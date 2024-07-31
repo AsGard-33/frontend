@@ -108,16 +108,15 @@ const Profile: React.FC<ProfileProps> = ({ profileUpdated }) => {
         <div>Loading...</div>
       )}
       <ButtonContainer>
-        <Button name="View All Users" onClick={() => handleNavigate('/users')} />
-        <Button name="View All Locations" onClick={() => handleNavigate('/locations')} />
-        <Button name="View All Blogs" onClick={() => handleNavigate('/blogs')} />
-        <Button name="View All Photos" onClick={() => handleNavigate('/photos')} />
-        <Button name="View All Messages" onClick={() => handleNavigate('/messages')} />
-        <Button name="View All Friends" onClick={() => handleNavigate('/friends')} />
+        <Button name="Users" onClick={() => handleNavigate('/users')} />
+        <Button name="Locations" onClick={() => handleNavigate('/locations')} />
+        <Button name="Blogs" onClick={() => handleNavigate('/blogs')} />
+        <Button name="Photos" onClick={() => handleNavigate('/photos')} />
+        {/* <Button name="Messages" onClick={() => handleNavigate('/messages')} />
+        <Button name="Friends" onClick={() => handleNavigate('/friends')} /> */}
       </ButtonContainer>
     </ProfileWrapper>
   );
 };
 
 export default Profile;
-

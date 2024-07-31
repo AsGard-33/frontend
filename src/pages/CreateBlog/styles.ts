@@ -5,7 +5,7 @@ export const CreateBlogWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: #f7f7f7;
+  background-color: #fafcfc00;
   border-radius: 8px;
   max-width: 600px;
   margin: 0 auto;
@@ -17,7 +17,7 @@ export const CreateBlogWrapper = styled.div`
 
 export const Title = styled.h2`
   margin-bottom: 1rem;
-  color: #333;
+  color: white;
 `;
 
 export const Input = styled.input`

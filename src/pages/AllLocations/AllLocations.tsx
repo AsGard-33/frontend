@@ -2,7 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchAllLocations } from 'services/locationService';
 import { LocationDTO } from 'pages/AllLocations/types';
-import { AllLocationsWrapper, LocationCard, Title, Sidebar, NavLink, LocationTitle, ButtonBoxon, LocationDescription, LocationImage, LocationCoordinates, LocationID, LocationActions, ProfileButton } from './styles';
+import {
+  AllLocationsWrapper,
+  LocationCard,
+  Title,
+  Sidebar,
+  NavLink,
+  LocationTitle,
+  ButtonBoxon,
+  LocationDescription,
+  LocationImage,
+  LocationCoordinates,
+  LocationActions,
+  ProfileButton,
+  LocationsContainer
+} from './styles';
 import Lightbox from 'components/Lightbox/Lightbox';
 
 const AllLocations: React.FC = () => {
@@ -34,15 +48,15 @@ const AllLocations: React.FC = () => {
     <AllLocationsWrapper>
       <Sidebar>
         <NavLink onClick={() => navigate('/create-location')}>Create Location</NavLink>
-        <NavLink onClick={() => navigate('/search-location')}>Search Location</NavLink>
+        <NavLink onClick={() => navigate('/search-location')}>Search Locations</NavLink>
       </Sidebar>
       <div>
         <ButtonBoxon onClick={() => navigate('/profile')}>
-          <ProfileButton>Profile</ProfileButton>
+          <ProfileButton>Back to my profile</ProfileButton>
         </ButtonBoxon>
         <Title>All Locations</Title>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        <div>
+        <LocationsContainer>
           {locations.map(location => (
             <LocationCard key={location.id}>
               <LocationTitle>{location.title}</LocationTitle>
@@ -53,14 +67,13 @@ const AllLocations: React.FC = () => {
                 onClick={() => handleImageClick(location.image || 'https://via.placeholder.com/150')}
               />
               <LocationCoordinates>Coordinates: {location.coordinates}</LocationCoordinates>
-              <LocationID>ID: {location.id}</LocationID>
               <LocationActions>
                 <NavLink onClick={() => navigate(`/update-location/${location.id}`)}>Update Location</NavLink>
                 <NavLink onClick={() => navigate(`/delete-location/${location.id}`)}>Delete Location</NavLink>
               </LocationActions>
             </LocationCard>
           ))}
-        </div>
+        </LocationsContainer>
       </div>
       {lightboxOpen && (
         <Lightbox image={currentImage} onClose={() => setLightboxOpen(false)} />

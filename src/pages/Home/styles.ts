@@ -4,8 +4,9 @@ import styled from '@emotion/styled';
 export const HomeWrapper = styled.div`
   padding: 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column; /* Change to column to stack containers vertically */
+  justify-content: flex-start;
+  align-items: first baseline;
   width: 100%;
   min-height: calc(100vh - 150px);
 
@@ -43,6 +44,11 @@ export const InfoSection = styled.div`
   margin-bottom: 40px;
 `;
 
+export const Logo = styled.div`
+display: flex;
+flex-direction: row;
+`;
+
 export const MessageBox = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
   padding: 20px;
@@ -60,9 +66,9 @@ export const MessageBox = styled.div`
 export const PhotosSection = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 20px;
   flex: 1;
+  width: 100%;
 `;
 
 export const PhotoCard = styled.div`
@@ -87,11 +93,11 @@ export const PhotoCard = styled.div`
 `;
 
 export const PhotoContainer = styled.div`
-  width: 100%;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   overflow: hidden;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin: 40px;
   transition: transform 0.2s ease-in-out;
 
   img {
@@ -111,9 +117,9 @@ export const PhotoContainer = styled.div`
 `;
 
 export const PhotoTitle = styled.h2`
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: cadetblue;
+  font-size: 40px;
+  margin: 10px;
+  color: bisque;
 
   @media (max-width: 768px) {
     font-size: 18px;
@@ -121,12 +127,44 @@ export const PhotoTitle = styled.h2`
 `;
 
 export const PhotoDescription = styled.p`
-  font-size: 14px;
-  color: #555;
+  font-size: 25px;
   text-align: center;
-  color: cadetblue;
+  color: white;
 
   @media (max-width: 768px) {
     font-size: 12px;
   }
+`;
+
+
+export const VideoCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  margin: 100px;
+`;
+
+export const VideoCard2 = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  margin: 100px;
+  margin-left: auto;
+`;
+
+export const VideoContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+`;
+
+export const TitleContainer = styled.div`
+display: flex;
+flex-direction: column;
+width: fit-content;
+
 `;

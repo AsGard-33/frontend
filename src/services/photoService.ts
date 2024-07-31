@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { PhotoDTO } from 'pages/UploadPhoto/types';
 
-export const getAllPhotosByUser = async (userId: number): Promise<PhotoDTO[]> => {
+export const searchPhotosByUserId = async (userId: string): Promise<PhotoDTO[]> => {
   const response = await axios.get(`/api/photos/user/${userId}`);
   return response.data;
 };

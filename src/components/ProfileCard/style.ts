@@ -23,9 +23,13 @@ export const ProfileAvatar = styled.img`
   width: 100%;
 `;
 
-export const AvatarH2 = styled.h2``;
+export const AvatarH2 = styled.h2`
+color: white;
+`;
 
-export const AvatarP = styled.p``;
+export const AvatarP = styled.p`
+color: white;
+`;
 
 export const AddFriendButton = styled.button`
   background-color: rgba(81, 83, 84, 0.3);
@@ -38,4 +42,8 @@ export const AddFriendButton = styled.button`
     background-color: #fcfcfc;
     color: black;
   }
+`;
+
+export const UserId = styled.h1`
+color: white;
 `;

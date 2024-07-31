@@ -2,27 +2,44 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getBlogById } from 'services/blogService';
 import { BlogCreateDTO } from './types';
-import { SearchBlogsWrapper, Title, Input, ErrorMessage, BlogDetailWrapper, BlogTitle, BlogContent, BackButton } from './styles';
-import Button from 'components/Button/Button';
+import { 
+  SearchBlogsWrapper, 
+  Title, 
+  Input, 
+  Button, 
+  ResultsList, 
+  BlogCard, 
+  BlogTitle, 
+  BlogContent, 
+  BlogActions, 
+  NavLink, 
+  ResultItem, 
+  ErrorMessage 
+} from './styles';
 
 const SearchBlogsById: React.FC = () => {
   const [id, setId] = useState<string>('');
-  const [blog, setBlog] = useState<BlogCreateDTO | null>(null);
+  const [blogs, setBlogs] = useState<BlogCreateDTO[]>([]);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleSearch = async () => {
     try {
       if (!id) {
-        setError('Blog ID is required');
+        setError('Please enter a blog ID to search');
         return;
       }
-      const blogData = await getBlogById(parseInt(id, 10));
-      setBlog(blogData);
-      setError(null);
+      const result = await getBlogById(parseInt(id, 10));
+      if (!result) {
+        setError('No blogs found');
+        setBlogs([]);
+      } else {
+        setError(null);
+        setBlogs([result]);
+      }
     } catch (err) {
-      setError('Failed to fetch blog details');
-      setBlog(null);
+      setError('Failed to fetch blogs');
+      setBlogs([]);
     }
   };
 
@@ -40,16 +57,24 @@ const SearchBlogsById: React.FC = () => {
         onChange={(e) => setId(e.target.value)}
         placeholder="Enter Blog ID"
       />
-      <Button name="Search Blog" onClick={handleSearch} />
-      {blog && (
-        <BlogDetailWrapper>
-          <BlogTitle>{blog.title}</BlogTitle>
-          <BlogContent>{blog.content}</BlogContent>
-          <BackButton>
-            <Button name="Back to All Blogs" onClick={handleBack} />
-          </BackButton>
-        </BlogDetailWrapper>
-      )}
+      <Button onClick={handleSearch}>Search</Button>
+      <Button onClick={handleBack}>Back to Blogs</Button>
+      <ResultsList>
+        {blogs.length === 0 && !error ? (
+          <ResultItem>No blogs found</ResultItem>
+        ) : (
+          blogs.map((blog) => (
+            <BlogCard key={blog.id}>
+              <BlogTitle>{blog.title}</BlogTitle>
+              <BlogContent>{blog.content}</BlogContent>
+              <BlogActions>
+                <NavLink onClick={() => navigate(`/update-blog/${blog.id}`)}>Update Blog</NavLink>
+                <NavLink onClick={() => navigate(`/delete-blog/${blog.id}`)}>Delete Blog</NavLink>
+              </BlogActions>
+            </BlogCard>
+          ))
+        )}
+      </ResultsList>
     </SearchBlogsWrapper>
   );
 };

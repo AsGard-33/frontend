@@ -65,7 +65,7 @@ export const Sidebar = styled.div`
 export const NavLink = styled.button`
   background: none;
   border: none;
-  padding: 20px 0;
+  margin-top: 25px;
   color: white;
   cursor: pointer;
   text-align: left;
@@ -98,6 +98,7 @@ export const ContentWrapper = styled.div`
 export const LocationTitle = styled.h3`
   font-size: 1.5em;
   color: #00a0fcfe;
+  margin-top: 25px;
 
   @media (max-width: 768px) {
     font-size: 1.2em;
@@ -107,6 +108,7 @@ export const LocationTitle = styled.h3`
 export const LocationDescription = styled.p`
   font-size: 1em;
   color: white;
+  margin-top: 25px;
 
   @media (max-width: 768px) {
     font-size: 0.9em;
@@ -117,6 +119,7 @@ export const LocationImage = styled.img`
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+  margin-top: 25px;
 
   @media (max-width: 768px) {
     max-width: 100%;
@@ -126,6 +129,7 @@ export const LocationImage = styled.img`
 export const LocationCoordinates = styled.p`
   font-size: 0.9em;
   color: white;
+  margin-top: 25px;
 
   @media (max-width: 768px) {
     font-size: 0.8em;
@@ -154,7 +158,7 @@ export const LocationActions = styled.div`
 export const ProfileButton = styled.button`
   padding: 10px 20px;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 25px;
   cursor: pointer;
   background-color: rgba(81, 83, 84, 0.3);
   color: white;
@@ -168,4 +172,10 @@ export const ProfileButton = styled.button`
 
 export const ButtonBoxon = styled.div`
 color: #fafcfc00;
+`;
+
+export const LocationsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 `;

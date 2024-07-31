@@ -3,7 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Lightbox from 'components/Lightbox/Lightbox'; // Импортируем Lightbox
 import { PhotoDTO } from './types';
-import { Container, PhotoItem, Image, Title, Description,ButtonBoxon, PhotoInfo, UploadButton, ProfileButton } from './styles'; // Импортируем стили для ProfileButton
+import {
+  Container,
+  PhotoItem,
+  Image,
+  Title,
+  Description,
+  PhotoInfo,
+  Sidebar,
+  NavLink,
+  PhotoTitle,
+  PhotosContainer, // Изменено на PhotosContainer
+  PhotoActions, // Изменено на PhotoActions
+  ButtonBoxon,
+  ProfileButton // Импортируем стили для ProfileButton
+} from './styles'; 
 
 const AllPhotos: React.FC = () => {
   const [photos, setPhotos] = useState<PhotoDTO[]>([]);
@@ -26,6 +40,15 @@ const AllPhotos: React.FC = () => {
     navigate('/photos/upload');
   };
 
+  const handleDeletePhoto = async (photoId: number) => {
+    try {
+      await axios.delete(`/api/photos/${photoId}`);
+      setPhotos(photos.filter(photo => photo.id !== photoId));
+    } catch (err) {
+      console.error('Failed to delete photo', err);
+    }
+  };
+
   const openLightbox = (image: string) => {
     setLightboxImage(image);
   };
@@ -41,24 +64,37 @@ const AllPhotos: React.FC = () => {
   return (
     <Container>
       {lightboxImage && <Lightbox image={lightboxImage} onClose={closeLightbox} />} {/* Lightbox для выбранного изображения */}
-      <ButtonBoxon onClick={() => navigate('/profile')}>
-        <ProfileButton>Profile</ProfileButton>
-      </ButtonBoxon>
-      <UploadButton onClick={handleUploadClick}>Upload Photo</UploadButton>
-      {photos.map(photo => (
-        <PhotoItem key={photo.id}>
-          <Image
-            src={photo.url}
-            alt={photo.title}
-            onClick={() => openLightbox(photo.url)} // Открытие Lightbox при клике на изображение
-            onError={(e) => { console.error(`Failed to load image at ${photo.url}`); }}
-          />
-          <PhotoInfo>ID: {photo.id}</PhotoInfo>
-          <Title>{photo.title}</Title>
-          <Description>{photo.description}</Description>
-          <PhotoInfo>User ID: {photo.userId}</PhotoInfo>
-        </PhotoItem>
-      ))}
+      <Sidebar>
+        <NavLink onClick={handleUploadClick}>Upload Photo</NavLink>
+        <NavLink onClick={() => navigate('/search-photo-by-title')}>Search Photo by Title</NavLink>
+        <NavLink onClick={() => navigate('/search-photo-by-user-id')}>Search Photo by User ID</NavLink>
+      </Sidebar>
+      <div>
+        <ButtonBoxon onClick={() => navigate('/profile')}>
+          <ProfileButton>Back to my profile</ProfileButton>
+        </ButtonBoxon>
+        <Title>Photos</Title>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <PhotosContainer>
+          {photos.map(photo => (
+            <PhotoItem key={photo.id}>
+              <PhotoTitle>{photo.title}</PhotoTitle>
+              <Image
+                src={photo.url}
+                alt={photo.title}
+                onClick={() => openLightbox(photo.url)} // Открытие Lightbox при клике на изображение
+                onError={(e) => { console.error(`Failed to load image at ${photo.url}`); }}
+              />
+              {/* <PhotoInfo>ID: {photo.id}</PhotoInfo> */}
+              <Description>{photo.description}</Description>
+              <PhotoInfo>User ID: {photo.userId}</PhotoInfo>
+              <PhotoActions>
+                <NavLink onClick={() => handleDeletePhoto(photo.id)}>Delete Photo</NavLink>
+              </PhotoActions>
+            </PhotoItem>
+          ))}
+        </PhotosContainer>
+      </div>
     </Container>
   );
 }

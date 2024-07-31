@@ -2,29 +2,43 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { searchBlogsByTitle } from 'services/blogService';
 import { BlogCreateDTO } from './types';
-import { SearchBlogsWrapper, Title, ErrorMessage, SuccessMessage, BlogsList, BlogItem } from './styles';
-import Button from 'components/Button/Button';
+import { 
+  SearchBlogsWrapper, 
+  Title, 
+  Input, 
+  Button, 
+  ResultsList, 
+  BlogCard, 
+  BlogTitle, 
+  BlogContent, 
+  BlogActions, 
+  NavLink, 
+  ResultItem, 
+  ErrorMessage 
+} from './styles';
 
 const SearchBlogsByTitle: React.FC = () => {
   const [title, setTitle] = useState<string>('');
   const [blogs, setBlogs] = useState<BlogCreateDTO[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleSearch = async () => {
     try {
       if (!title) {
-        setError('Title is required');
+        setError('Please enter a title to search');
         return;
       }
-      const response = await searchBlogsByTitle(title);
-      setBlogs(response);
-      setSuccess(true);
-      setError(null);
+      const results = await searchBlogsByTitle(title);
+      if (results.length === 0) {
+        setError('No blogs found');
+      } else {
+        setError(null);
+        setBlogs(results);
+      }
     } catch (err) {
-      setError('Failed to search blogs');
-      setSuccess(false);
+      setError('Failed to fetch blogs');
+      setBlogs([]);
     }
   };
 
@@ -36,23 +50,30 @@ const SearchBlogsByTitle: React.FC = () => {
     <SearchBlogsWrapper>
       <Title>Search Blogs by Title</Title>
       {error && <ErrorMessage>{error}</ErrorMessage>}
-      {success && <SuccessMessage>Blogs found successfully!</SuccessMessage>}
-      <input
+      <Input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Enter Blog Title"
       />
-      <Button name="Search Blogs" onClick={handleSearch} />
-      <Button name="Back to All Blogs" onClick={handleBack} />
-      <BlogsList>
-        {blogs.map((blog) => (
-          <BlogItem key={blog.id}>
-            <h3>{blog.title}</h3>
-            <p>{blog.content}</p>
-          </BlogItem>
-        ))}
-      </BlogsList>
+      <Button onClick={handleSearch}>Search</Button>
+      <Button onClick={handleBack}>back to blogs</Button>
+      <ResultsList>
+        {blogs.length === 0 && !error ? (
+          <ResultItem>No blogs found</ResultItem>
+        ) : (
+          blogs.map((blog) => (
+            <BlogCard key={blog.id}>
+              <BlogTitle>{blog.title}</BlogTitle>
+              <BlogContent>{blog.content}</BlogContent>
+              <BlogActions>
+                <NavLink onClick={() => navigate(`/update-blog/${blog.id}`)}>Update Blog</NavLink>
+                <NavLink onClick={() => navigate(`/delete-blog/${blog.id}`)}>Delete Blog</NavLink>
+              </BlogActions>
+            </BlogCard>
+          ))
+        )}
+      </ResultsList>
     </SearchBlogsWrapper>
   );
 };

@@ -33,6 +33,7 @@ export const ProfileInfo = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 200px;
   margin-top: 100px;
   gap: 10px;
   position: absolute;
@@ -70,7 +71,7 @@ export const ProfileErrorWrapper = styled.div`
   justify-content: center;
   height: 150px;
   width: 300px;
-  background-color: #d8e8dbd8;
+  background-color: rgba(15, 39, 46, 0.3);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -99,7 +100,7 @@ export const ErrorButton = styled.div``;
 
 export const ProfileText = styled.p`
   color: black;
-  font-weight: 900;
+  font-weight: 10px;
   margin: 15px 0;
   font-size: 23px;
 

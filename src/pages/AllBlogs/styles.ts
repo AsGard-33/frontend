@@ -103,6 +103,7 @@ export const ContentWrapper = styled.div`
 export const BlogTitle = styled.h3`
   font-size: 1.5em;
   color: #00a0fcfe;
+  margin: 10px;
 
   @media (max-width: 768px) {
     font-size: 1.2em;
@@ -112,6 +113,7 @@ export const BlogTitle = styled.h3`
 export const BlogContent = styled.p`
   font-size: 1em;
   color: white;
+  margin: 15px;
 
   @media (max-width: 768px) {
     font-size: 0.9em;
@@ -121,6 +123,7 @@ export const BlogContent = styled.p`
 export const BlogID = styled.p`
   font-size: 0.9em;
   color: #999;
+  margin: 15px;
 
   @media (max-width: 768px) {
     font-size: 0.8em;
@@ -140,7 +143,7 @@ export const BlogActions = styled.div`
 export const ProfileButton = styled.button`
   padding: 10px 20px;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 25px;
   cursor: pointer;
   background-color: rgba(81, 83, 84, 0.3);
   color: white;

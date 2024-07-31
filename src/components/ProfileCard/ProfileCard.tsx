@@ -1,10 +1,10 @@
 import { ProfileCardProps } from "./type";
-import { ProfileCardWraper, AvatarControl, ProfileAvatar, AvatarH2, AvatarP, AddFriendButton } from "./style";
+import { ProfileCardWraper, AvatarControl, ProfileAvatar, AvatarH2, UserId, AvatarP, AddFriendButton } from "./style";
 
 function ProfileCard({
   profileData,
   imgSrc,
-  children = <h1>User: {profileData.id}</h1>,
+  children = <UserId>User: {profileData.id}</UserId>,
   onAddFriend,
 }: ProfileCardProps) {
   const getUserName = () => {

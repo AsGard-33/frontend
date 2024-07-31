@@ -1,12 +1,32 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { searchLocationsByTitle } from 'services/locationService';
 import { LocationDTO } from './types';
-import { SearchLocationWrapper, Title, Input, Button, ResultsList, ResultItem, ErrorMessage } from './styles';
+import { 
+  SearchLocationWrapper, 
+  Title, 
+  Input, 
+  Button, 
+  ResultsList,
+  LocationCoordinates,
+  LocationImage,
+  LocationCard,
+  LocationTitle,
+  LocationDescription, 
+  ResultItem,
+  LocationActions,
+  NavLink,
+  ErrorMessage 
+} from './styles';
+import Lightbox from 'components/Lightbox/Lightbox'; // Импортируем Lightbox
 
 const SearchLocationByTitle: React.FC = () => {
   const [title, setTitle] = useState<string>('');
   const [locations, setLocations] = useState<LocationDTO[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
+  const [currentImage, setCurrentImage] = useState<string>('');
+  const navigate = useNavigate(); // Добавляем useNavigate
 
   const handleSearch = async () => {
     try {
@@ -20,6 +40,11 @@ const SearchLocationByTitle: React.FC = () => {
     } catch (err) {
       setError('Failed to fetch locations');
     }
+  };
+
+  const handleImageClick = (image: string) => {
+    setCurrentImage(image);
+    setLightboxOpen(true);
   };
 
   return (
@@ -38,13 +63,26 @@ const SearchLocationByTitle: React.FC = () => {
           <ResultItem>No locations found</ResultItem>
         ) : (
           locations.map((location) => (
-            <ResultItem key={location.id}>
-              <h3>{location.title}</h3>
-              <p>{location.description}</p>
-            </ResultItem>
+            <LocationCard key={location.id}>
+              <LocationTitle>{location.title}</LocationTitle>
+              <LocationDescription>{location.description}</LocationDescription>
+              <LocationImage
+                src={location.image || 'https://via.placeholder.com/150'}
+                alt={location.title}
+                onClick={() => handleImageClick(location.image || 'https://via.placeholder.com/150')}
+              />
+              <LocationCoordinates>Coordinates: {location.coordinates}</LocationCoordinates>
+              <LocationActions>
+                <NavLink onClick={() => navigate(`/update-location/${location.id}`)}>Update Location</NavLink>
+                <NavLink onClick={() => navigate(`/delete-location/${location.id}`)}>Delete Location</NavLink>
+              </LocationActions>
+            </LocationCard>
           ))
         )}
       </ResultsList>
+      {lightboxOpen && (
+        <Lightbox image={currentImage} onClose={() => setLightboxOpen(false)} />
+      )}
     </SearchLocationWrapper>
   );
 };
