@@ -1,17 +1,17 @@
-// styles.ts
 import styled from '@emotion/styled';
 
 export const HomeWrapper = styled.div`
   padding: 20px;
   display: flex;
-  flex-direction: column; /* Stack containers vertically */
+  flex-direction: column; /* Ensure containers are stacked vertically */
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   min-height: calc(100vh - 150px);
 
   @media (max-width: 768px) {
     padding: 10px;
+    align-items: center;
   }
 `;
 
@@ -40,7 +40,6 @@ export const HomeMessage = styled.p`
 
 export const InfoSection = styled.div`
   margin-bottom: 40px;
-  width: 100%;
 `;
 
 export const Logo = styled.div`
@@ -53,10 +52,11 @@ export const MessageBox = styled.div`
   padding: 20px;
   border-radius: 8px;
   flex: 1;
-  margin-bottom: 20px;
-  width: 100%;
+  margin-right: 20px;
 
   @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 20px;
     width: 100%;
   }
 `;
@@ -73,7 +73,7 @@ export const PhotoCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 500px;
   background: rgb(217, 218, 219);
   padding: 10px;
   border-radius: 8px;
@@ -91,11 +91,11 @@ export const PhotoCard = styled.div`
 `;
 
 export const PhotoContainer = styled.div`
-  width: 100%;
+  width: 400px;
   height: 400px;
   overflow: hidden;
   border-radius: 8px;
-  margin: 40px 0;
+  margin: 40px;
   transition: transform 0.2s ease-in-out;
 
   img {
@@ -111,7 +111,6 @@ export const PhotoContainer = styled.div`
 
   @media (max-width: 768px) {
     height: 200px;
-    margin: 20px 0;
   }
 `;
 
@@ -138,14 +137,12 @@ export const PhotoDescription = styled.p`
 export const VideoCard = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   margin: 100px;
-  width: 100%;
 
   @media (max-width: 768px) {
-    margin: 20px;
     flex-direction: column;
-    align-items: center;
+    margin: 20px;
   }
 `;
 
@@ -154,12 +151,11 @@ export const VideoCard2 = styled.div`
   flex-direction: row-reverse;
   align-items: flex-start;
   margin: 100px;
-  width: 100%;
+  margin-left: auto;
 
   @media (max-width: 768px) {
-    margin: 20px;
     flex-direction: column-reverse;
-    align-items: center;
+    margin: 20px;
   }
 `;
 
