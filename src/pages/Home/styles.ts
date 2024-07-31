@@ -4,15 +4,13 @@ import styled from '@emotion/styled';
 export const HomeWrapper = styled.div`
   padding: 20px;
   display: flex;
-  flex-direction: column; /* Change to column to stack containers vertically */
+  flex-direction: column; /* Stack containers vertically */
   justify-content: flex-start;
-  align-items: first baseline;
+  align-items: center;
   width: 100%;
   min-height: calc(100vh - 150px);
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
     padding: 10px;
   }
 `;
@@ -42,11 +40,12 @@ export const HomeMessage = styled.p`
 
 export const InfoSection = styled.div`
   margin-bottom: 40px;
+  width: 100%;
 `;
 
 export const Logo = styled.div`
-display: flex;
-flex-direction: row;
+  display: flex;
+  flex-direction: row;
 `;
 
 export const MessageBox = styled.div`
@@ -54,11 +53,10 @@ export const MessageBox = styled.div`
   padding: 20px;
   border-radius: 8px;
   flex: 1;
-  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 100%;
 
   @media (max-width: 768px) {
-    margin-right: 0;
-    margin-bottom: 20px;
     width: 100%;
   }
 `;
@@ -75,7 +73,7 @@ export const PhotoCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
+  width: 100%;
   background: rgb(217, 218, 219);
   padding: 10px;
   border-radius: 8px;
@@ -93,11 +91,11 @@ export const PhotoCard = styled.div`
 `;
 
 export const PhotoContainer = styled.div`
-  width: 400px;
+  width: 100%;
   height: 400px;
   overflow: hidden;
   border-radius: 8px;
-  margin: 40px;
+  margin: 40px 0;
   transition: transform 0.2s ease-in-out;
 
   img {
@@ -113,6 +111,7 @@ export const PhotoContainer = styled.div`
 
   @media (max-width: 768px) {
     height: 200px;
+    margin: 20px 0;
   }
 `;
 
@@ -136,12 +135,18 @@ export const PhotoDescription = styled.p`
   }
 `;
 
-
 export const VideoCard = styled.div`
   display: flex;
   flex-direction: row;
   align-items: start;
   margin: 100px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    margin: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const VideoCard2 = styled.div`
@@ -149,7 +154,13 @@ export const VideoCard2 = styled.div`
   flex-direction: row-reverse;
   align-items: flex-start;
   margin: 100px;
-  margin-left: auto;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    margin: 20px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 `;
 
 export const VideoContainer = styled.div`
@@ -163,8 +174,7 @@ export const VideoContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-display: flex;
-flex-direction: column;
-width: fit-content;
-
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
 `;

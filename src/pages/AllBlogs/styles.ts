@@ -40,6 +40,7 @@ export const BlogCard = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
+    min-width: 100%;
   }
 `;
 
@@ -156,5 +157,5 @@ export const ProfileButton = styled.button`
 `;
 
 export const ButtonBoxon = styled.div`
-color: #fafcfc00;
+  color: #fafcfc00;
 `;

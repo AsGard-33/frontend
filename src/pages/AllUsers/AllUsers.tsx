@@ -52,7 +52,7 @@ const AllUsers: React.FC = () => {
       <NavLink to="/profile">
         <ProfileButton>back to my profile</ProfileButton>
       </NavLink>
-      <Title>All Users</Title>
+      <Title>Users</Title>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {users.map((user) => (
         <ProfileCard

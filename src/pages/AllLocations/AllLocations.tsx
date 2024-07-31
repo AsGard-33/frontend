@@ -54,7 +54,7 @@ const AllLocations: React.FC = () => {
         <ButtonBoxon onClick={() => navigate('/profile')}>
           <ProfileButton>Back to my profile</ProfileButton>
         </ButtonBoxon>
-        <Title>All Locations</Title>
+        <Title>Locations</Title>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <LocationsContainer>
           {locations.map(location => (

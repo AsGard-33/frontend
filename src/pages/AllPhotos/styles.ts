@@ -4,8 +4,8 @@ export const Container = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: row;
-  align-items: flex-start; /* Изменил на flex-start, чтобы элементы выравнивались по верхнему краю */
-  margin-left: 220px; /* Добавил отступ, чтобы учесть ширину Sidebar */
+  align-items: flex-start;
+  margin-left: 220px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -21,11 +21,12 @@ export const PhotoItem = styled.div`
   margin: 10px 0;
   width: 300px;
   background-color: #00020394;
-  flex-grow: 1; /* Позволяет карточке расти вправо */
+  flex-grow: 1;
   min-width: 500px;
 
   @media (max-width: 768px) {
     width: 100%;
+    min-width: unset;
   }
 `;
 
@@ -78,12 +79,12 @@ export const Sidebar = styled.div`
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  top: 100px; /* Учитываем высоту header */
-  bottom: 190px; /* Учитываем высоту footer */
+  top: 100px;
+  bottom: 190px;
   left: 0;
   background-color: #6a95ad3b;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Добавляем тень для лучшего визуального разделения */
-  z-index: 1000; /* Обеспечиваем, что Sidebar будет поверх других элементов */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 
   @media (max-width: 768px) {
     position: relative;
@@ -102,8 +103,9 @@ export const NavLink = styled.button`
   color: white;
   cursor: pointer;
   text-align: left;
-  font-size: 33px; /* Увеличение размера шрифта */
-  font-weight: bold; /* Жирный шрифт */
+  font-size: 33px;
+  font-weight: bold;
+
   &:hover {
     text-decoration: underline;
   }
@@ -123,6 +125,7 @@ export const ProfileButton = styled.button`
   color: white;
   border: none;
   border-radius: 5px;
+
   &:hover {
     background-color: #fcfcfc;
     color: black;
@@ -130,7 +133,7 @@ export const ProfileButton = styled.button`
 `;
 
 export const ButtonBoxon = styled.div`
-color: #fafcfc00;
+  color: #fafcfc00;
 `;
 
 export const PhotosContainer = styled.div`
