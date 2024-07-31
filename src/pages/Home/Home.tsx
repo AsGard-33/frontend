@@ -127,7 +127,7 @@ const HomePage: React.FC = () => {
             <video src={video3} autoPlay loop muted controls />
           </VideoContainer>
           <TitleContainer>
-            <PhotoTitle>Friendly Gatherings Around the Campfire</PhotoTitle>
+            <PhotoTitle>Traveling in groups to historical places</PhotoTitle>
             <PhotoDescription>
               Group trips to historical sites offer an enriching experience,
               combining education, adventure, and social interaction. These
