@@ -5,6 +5,7 @@ export const PhotoWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  color: #fcfcfc00;
 `;
 
 export const Input = styled.input`

@@ -40,13 +40,8 @@ const AllPhotos: React.FC = () => {
     navigate('/photos/upload');
   };
 
-  const handleDeletePhoto = async (photoId: number) => {
-    try {
-      await axios.delete(`/api/photos/${photoId}`);
-      setPhotos(photos.filter(photo => photo.id !== photoId));
-    } catch (err) {
-      console.error('Failed to delete photo', err);
-    }
+  const handleDeletePhotoClick = (photoId: number) => {
+    navigate(`/photos/delete/${photoId}`);
   };
 
   const openLightbox = (image: string) => {
@@ -89,7 +84,7 @@ const AllPhotos: React.FC = () => {
               <Description>{photo.description}</Description>
               <PhotoInfo>User ID: {photo.userId}</PhotoInfo>
               <PhotoActions>
-                <NavLink onClick={() => handleDeletePhoto(photo.id)}>Delete Photo</NavLink>
+                <NavLink onClick={() => handleDeletePhotoClick(photo.id)}>Delete Photo</NavLink>
               </PhotoActions>
             </PhotoItem>
           ))}

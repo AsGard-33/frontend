@@ -5,6 +5,7 @@ export const BlogFormWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  color: #fcfcfc00;
 `;
 
 export const Title = styled.h1`

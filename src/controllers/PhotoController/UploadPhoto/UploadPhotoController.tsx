@@ -80,6 +80,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { Container, Form, Input, TextArea, Button, Error } from './styles';
 import { PhotoDTO } from './types';
 
@@ -90,6 +91,7 @@ const UploadPhotoController: React.FC = () => {
   const [photoUrl, setPhotoUrl] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<PhotoDTO | null>(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -109,6 +111,7 @@ const UploadPhotoController: React.FC = () => {
       const response = await axios.post('/api/photos/upload-url', photoData);
       setSuccess(response.data);
       setError(null);
+      navigate('/photos'); // Перенаправление на страницу "All Photos" после успешной загрузки
     } catch (err) {
       setError('Failed to upload photo');
       setSuccess(null);
