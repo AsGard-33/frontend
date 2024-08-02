@@ -12,6 +12,7 @@ import {
   StyledNavLink,
   NavContainerFooter,
   SocialIcons,
+  Title,
   IconLink
 } from "./styles";
 
@@ -23,6 +24,7 @@ function Layout({ children }: LayoutProps) {
           <NavLink to="/">
             <HeaderLogo />
           </NavLink>
+          <Title>Travelbookblog</Title>
         </HeaderLogoContainer>
         <NavContainer>
           <StyledNavLink

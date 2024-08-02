@@ -23,13 +23,18 @@ export const Header = styled.header`
 `;
 
 export const HeaderLogoContainer = styled.div`
-  width: 40px;
-  height: 40px;
+display: flex;
+align-items: center;
+  /* width: 40px;
+  height: 40px; */
 `;
 
 export const HeaderLogo = styled.img`
-  width: 100%;
-  height: 100%;
+width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  /* width: 100%;
+  height: 100%; */
 `;
 
 HeaderLogo.defaultProps = { src: UserLogo };
@@ -101,4 +106,10 @@ export const LogoutLink = styled.button`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const Title = styled.div`
+font-size: 40px;
+  font-weight: bold;
+  color: white;
 `;
